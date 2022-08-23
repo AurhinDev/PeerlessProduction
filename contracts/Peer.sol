@@ -58,11 +58,11 @@ contract Peer is ReentrancyGuard {
         _;
     }
 
-    event BuyFRXSTOrder(address indexed _from, uint indexed _id, uint _frxst, uint _matic);
-    event SellFRXSTOrder(address indexed _from, uint indexed _id, uint _frxst, uint _matic);
-    event CancelledOrder(address indexed _from, uint indexed _id, uint _frxst, uint _matic);
-    event BuyFRXSTOrderFilled(address indexed _from, uint indexed _id, uint _frxst, uint _matic);
-    event SellFRXSTOrderFilled(address indexed _from, uint indexed _id, uint _frxst, uint _matic);
+    event BuyTokenOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
+    event SellTokenOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
+    event CancelledOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
+    event BuyTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
+    event SellTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
 
     constructor(address _factory, 
     string memory _name, 
@@ -98,7 +98,7 @@ contract Peer is ReentrancyGuard {
         ordersByOwner[msg.sender].push(orderId);
         _buyOrdersPosted += 1;
 
-        emit BuyFRXSTOrder(msg.sender, orderId, _evmCurrency, _token);
+        emit BuyTokenOrder(msg.sender, orderId, _evmCurrency, _token);
         orderId++;
         
         evmCurrencyFeesCollected += GetCostWithFee(_evmCurrency) - _evmCurrency;
@@ -106,7 +106,7 @@ contract Peer is ReentrancyGuard {
 
     // SELL TOKEN FOR EVM CURRENCY
     function PostSellOrder(uint _evmCurrency, uint _token) external notFrozen() {
-        require(token.balanceOf(msg.sender) > GetCostWithFee(_token), "Insufficient FRXST");
+        require(token.balanceOf(msg.sender) > GetCostWithFee(_token), "Insufficient Token");
         
         token.transferFrom(msg.sender, address(this), _token);
         
@@ -115,7 +115,7 @@ contract Peer is ReentrancyGuard {
         allOrders[orderId] = order;
         ordersByOwner[msg.sender].push(orderId);
         _sellOrdersPosted += 1;
-        emit SellFRXSTOrder(msg.sender, orderId, _token, _evmCurrency);
+        emit SellTokenOrder(msg.sender, orderId, _token, _evmCurrency);
         orderId++;
         tokenFeesCollected += GetCostWithFee(_token) - _token;
     }
@@ -133,24 +133,24 @@ contract Peer is ReentrancyGuard {
 
         if (allOrders[_orderId].buyToken) {
 
-            // Check FRXST Balance
-            require(getContractTokenBalance() >= allOrders[_orderId].token, "Insufficient contract frxst balance");
+            // Check Token Balance
+            require(getContractTokenBalance() >= allOrders[_orderId].token, "Insufficient contract Token balance");
 
-            // // Deposits FRXST in contract
-            // frxst.transferFrom(msg.sender, address(this), GetCostWithFee(orders[_orderId].frxst));
+            // // Deposits Token in contract
+            // Token.transferFrom(msg.sender, address(this), GetCostWithFee(orders[_orderId].token));
             
-            // // Check FRXST before transfer out
-            // require(frxst.balanceOf(address(this)) > orders[_orderId].frxst, "Insufficient FRXST");
+            // // Check Token before transfer out
+            // require(Token.balanceOf(address(this)) > orders[_orderId].Token, "Insufficient Token");
             
-            // Check MATIC before transfer out
-            require(address(this).balance > allOrders[_orderId].evmCurrency, "Insufficient contract matic balance");
+            // Check EVM before transfer out
+            require(address(this).balance > allOrders[_orderId].evmCurrency, "Insufficient contract EVM balance");
 
-            // Sends FRXST to Order owner
+            // Sends Token to Order owner
             token.transfer(allOrders[_orderId].owner, allOrders[_orderId].token);
-            //orders[_orderId].owner.transfer(orders[_orderId].frxst);
-            //frxst.transferFrom(owner, orders[_orderId].owner ,orders[_orderId].frxst);
+            //orders[_orderId].owner.transfer(orders[_orderId].Token);
+            //Token.transferFrom(owner, orders[_orderId].owner ,orders[_orderId].Token);
 
-            // Sends MATIC to FRXST seller
+            // Sends EVM to Token seller
             (bool hs, ) = payable(msg.sender).call{value: allOrders[_orderId].evmCurrency }("");
             require(hs);
 
@@ -159,23 +159,23 @@ contract Peer is ReentrancyGuard {
             orderList[allOrders[_orderId].indexInOrderList].filled = true;
 
             _buyOrdersFilled += 1;
-            emit BuyFRXSTOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
+            emit BuyTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
 
 
         } else {
-             // Check MATIC msg.value
-            require(msg.value > GetCostWithFee(allOrders[_orderId].evmCurrency), "Insufficient sender MATIC");
+             // Check EVMCURRENCY msg.value
+            require(msg.value > GetCostWithFee(allOrders[_orderId].evmCurrency), "Insufficient sender EVM");
 
-            // Check FRXST before transfer out
-            require(token.balanceOf(address(this)) > allOrders[_orderId].token, "Insufficient contract FRXST");
+            // Check Token before transfer out
+            require(token.balanceOf(address(this)) > allOrders[_orderId].token, "Insufficient contract Token");
             
-            // Check MATIC before transfer out
-            require(address(this).balance > allOrders[_orderId].evmCurrency, "Insufficient contract matic balance");
+            // Check EVMCURRENCY before transfer out
+            require(address(this).balance > allOrders[_orderId].evmCurrency, "Insufficient contract EVM balance");
 
-            // Sends FRXST to order filler
+            // Sends Token to order filler
             token.transfer(allOrders[_orderId].owner, allOrders[_orderId].token);
 
-            // Sends MATIC to order owner
+            // Sends EVMCURRENCY to order owner
             (bool hs, ) = payable( allOrders[_orderId].owner).call{value: allOrders[_orderId].evmCurrency }("");
             require(hs);
 
@@ -185,7 +185,7 @@ contract Peer is ReentrancyGuard {
 
             _sellOrdersFilled += 1;
             
-            emit SellFRXSTOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
+            emit SellTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
         }
         //RemoveOrderFromList(_orderId);
     }
