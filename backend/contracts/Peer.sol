@@ -50,6 +50,7 @@ contract Peer is ReentrancyGuard {
         uint evmCurrency; //ETH, MATIC etc
         uint token;
         bool buyToken;
+        uint datecreated;
         uint indexInOrderList;
     }
 
@@ -92,7 +93,7 @@ contract Peer is ReentrancyGuard {
         require(_evmCurrency > 0 && _token > 0, 'Too low order');
         require(msg.value > GetCostWithFee(_evmCurrency), 'Insufficient EVM Currency + Fee');
          
-        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, true, orderList.length);
+        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, true, block.timestamp, orderList.length);
         orderList.push(order);
         allOrders[orderId] = order;
         ordersByOwner[msg.sender].push(orderId);
@@ -110,7 +111,7 @@ contract Peer is ReentrancyGuard {
         
         token.transferFrom(msg.sender, address(this), _token);
         
-        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, false, orderList.length);
+        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, false, block.timestamp, orderList.length);
         orderList.push(order);
         allOrders[orderId] = order;
         ordersByOwner[msg.sender].push(orderId);
