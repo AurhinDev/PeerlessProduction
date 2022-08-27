@@ -2,6 +2,7 @@ pragma solidity ^0.8.0;
 
 //SPDX-License-Identifier: UNLICENSED
 
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "./Peer.sol";
@@ -27,7 +28,7 @@ contract PeerlessFactory {
 
     struct PeerStruct {
         address owner;
-        address tokenAdr;
+        address peerAdr;
         uint peerID;
         uint dateCreated;
         string name;
