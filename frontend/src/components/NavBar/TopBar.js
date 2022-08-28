@@ -15,6 +15,7 @@ function TopBar(props) {
 
   return (
     <div className='TopBar-container' >
+      <h1>PeerlessProduction</h1>
        <div className='TopBar-stats'>
       <h3> Coola Stats 1</h3>
       <h3> Coola Stats 2</h3>

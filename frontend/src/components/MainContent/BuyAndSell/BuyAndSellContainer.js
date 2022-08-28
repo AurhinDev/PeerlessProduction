@@ -22,7 +22,7 @@ function BuyAndSellContainer(props) {
   return (
     <div className=" centerInDiv BuyAndSellContainer-container  ">
       <div className="BuyAndSellContainer-HeaderAndButtons">
-      {buy?<h2> Buy STONKS</h2>:<h2> Sell STONKS</h2> }
+      {buy?<h2> BUY</h2>:<h2> SELL</h2> }
       <div className="BuyAndSellContainer-form-buttons">
           <button  type="button" onClick={handleBuyAndSell} value="buy" className="BuyButton button-5">
             Buy

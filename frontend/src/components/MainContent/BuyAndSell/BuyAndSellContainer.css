@@ -41,6 +41,8 @@
   box-shadow: rgb(192, 15, 15) 5px 5px 20px;
 
 }
+.BuyAndSellContainer-HeaderAndButtons h2{
+}
 
 .BuyAndSellContainer-form {
   width: 80%;
@@ -62,9 +64,10 @@
   
 }
 .BuyAndSellContainer-form-input label{
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 300;
   margin-bottom: 0.2rem;
+  letter-spacing: 0.4rem;
 }
 .BuyAndSellContainer-form-input input {
   display: flex;
