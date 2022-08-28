@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NetworkContext, CurrencyContext } from "../../helper/Context";
-
+import "./Dropdown.css";
 function CurrencyDropdown(props) {
   const { network, setNetwork } = useContext(NetworkContext);
   const { currency, setCurrency } = useContext(CurrencyContext);
@@ -23,19 +23,20 @@ function CurrencyDropdown(props) {
   const selectedNetwork = networkCurency[network];
   const entries = Object.entries(selectedNetwork);
 
-
   function handleChange(e) {
-    setCurrency(e.target.value)
+    setCurrency(e.target.value);
   }
 
   const listItems = entries.map((item) => (
     <option key={item[0]}>{item[0] + "-" + item[1]}</option>
   ));
-  
 
   return (
-    <div>
-      <select onChange={(e) => handleChange(e)}>{listItems}</select>
+    <div className="dropDown-container">
+      <h3>Currency</h3>
+      <div class="select-dropdown">
+        <select onChange={(e) => handleChange(e)}>{listItems}</select>
+      </div>
     </div>
   );
 }

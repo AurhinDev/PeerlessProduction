@@ -8,11 +8,12 @@ function TabelContainer(props) {
   const { network, setNetwork } = useContext(NetworkContext);
   const { currency, setCurrency } = useContext(CurrencyContext);
   
+  
   return (
     <div className="TabelContainer-container">
       <h2>Orders</h2>
-      <div className='TabelContainer-scrollable'>
-      <table className="TabelContainer-tabel">
+      <div className='TabelContainer-scrollable standardShadow'>
+      <table className="TabelContainer-tabel ">
         <thead>
           <tr className="TabelContainer-first-row">
             <th>ID</th>

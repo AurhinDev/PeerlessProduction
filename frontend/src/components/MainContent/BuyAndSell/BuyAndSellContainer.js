@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./BuyAndSellContainer.css";
 function BuyAndSellContainer(props) {
-  const [buy, setBuy] = useState(false);
+  const [buy, setBuy] = useState(true);
 
   function handleBuyAndSell(e) {
     if (e.target.value == "buy") {
@@ -37,7 +37,7 @@ function BuyAndSellContainer(props) {
           </button>
         </div>
         </div>
-      <form className="BuyAndSellContainer-form" style={{backgroundColor: buy? "rgb(22, 156, 20, 0.8)": "rgb(192, 15, 15, 0.8)"}}>
+      <form className="BuyAndSellContainer-form"  style={buy? {backgroundColor:"rgb(22, 156, 20, 0.3)",  boxShadow: "rgb(39, 206, 36, 0.1) 5px 5px 20px"}: {backgroundColor:"rgb(192, 15, 15, 0.3)",  boxShadow: "rgb(192, 15, 15, 0.1)  5px 5px 20px"} }>
         
 
         <div className="BuyAndSellContainer-form-input">

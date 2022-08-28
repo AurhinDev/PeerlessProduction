@@ -4,10 +4,10 @@ import "./ActiveOrdersContainer.css"
 function ActiveOrdersContainer(props) {
   
   return (
-    <div className='ActiveOrdersContainer-container'>
+    <div className='ActiveOrdersContainer-container  '>
       <h2> My Orders</h2>
-      <div className='ActiveOrdersContainer-scrollable'>
-      <table className="ActiveOrdersContainer-tabel">
+      <div className='ActiveOrdersContainer-scrollable standardShadow '>
+      <table className="ActiveOrdersContainer-tabel ">
         <thead>
           <tr className="ActiveOrdersContainer-first-row">
             <th>ID</th>

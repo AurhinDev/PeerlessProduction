@@ -7,16 +7,19 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
+  
 
 }
 .TabelContainer-scrollable{
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  background-color: var(--muteColor2)
+  background-color: var(--muteColor2);
+  border-radius: 0.4rem;
 
 }
 .TabelContainer-tabel{
+  
   table-layout: auto;
   width: 100%;  
   border-collapse: collapse;
@@ -27,8 +30,7 @@
 
 }
 .TabelContainer-tabel tr th,.TabelContainer-tabel tr td {
-  border: 1px solid rgb(0, 0, 0);
-  border: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(144, 144, 144);
   padding: 0.5rem;
   text-align: center;
 }

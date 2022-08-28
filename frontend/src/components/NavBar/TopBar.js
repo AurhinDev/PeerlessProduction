@@ -15,11 +15,14 @@ function TopBar(props) {
 
   return (
     <div className='TopBar-container' >
+       <div className='TopBar-stats'>
       <h3> Coola Stats 1</h3>
       <h3> Coola Stats 2</h3>
+      </div>
+      <div className='TopBar-dropdowns'>
       <NetworkDropdown/>
       <CurrencyDropdown/>
-      <button onClick={connect}>Click</button>
+      </div>
     </div>
   );
 }

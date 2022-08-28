@@ -9,7 +9,7 @@ body,
   width: 100vw;
   overflow: hidden;
 
-  background-color: var(--muteColor1);
+  background: linear-gradient(45deg,  rgb(2, 0, 20) 10%, black 45%);
 
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
@@ -32,8 +32,10 @@ body,
   --mainColor3: #0b6ab0;
   --secondColor1: #ce4912;
   --secondColor2: #f36b1c;
-  --muteColor1: rgb(12, 12, 12);
-  --muteColor2: rgb(54, 54, 54);
+  --muteColor1: rgb(0, 0, 0);
+  --muteColor2: rgb(37, 37, 37);
+  --muteColor3: rgb(90, 90, 90);
+  --grayColor: rgb(192, 192, 192);
 }
 h1,
 h2,
@@ -44,8 +46,12 @@ h5 {
 }
 h1,
 h2,
-h3 {
+h3, label{
   font-family: "Inter";
+}
+
+.standardShadow{
+  box-shadow: #0b6bb04a 5px 5px 20px;
 }
 
 /* CSS */
@@ -110,7 +116,7 @@ h3 {
   line-height: 20px;
   margin: 0;
   outline: none;
-  padding: 13px 23px;
+  padding: 10px 10px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -137,4 +143,30 @@ h3 {
   color: #DDDDDD;
   cursor: not-allowed;
   opacity: 1;
+}
+
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+  width: 12px;
+  margin-left:  1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--muteColor3);
+  border-radius: 0.2rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--grayColor);
+  border-radius: 0.2rem;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(177, 177, 177);
+  border-radius: 0.2rem;
 }

@@ -12,13 +12,14 @@
 .ActiveOrdersContainer-scrollable{
   overflow-y: scroll;
   width: 100%;
-  background-color: var(--muteColor2)
- 
+  background-color: var(--muteColor2);
+  border-radius: 0.4rem;
 }
 .ActiveOrdersContainer-tabel{
   table-layout: auto;
   width: 100%;  
   border-collapse: collapse;
+  
   
   text-align: left;
   position: relative;
@@ -36,14 +37,19 @@
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
   background-color: var(--mainColor2);
   z-index: 1;
+  
  
 }
 .ActiveOrdersContainer-tabel tr td{
-  background-color: var(--muteColor2)
+  background-color: var(--muteColor2);
+  
 
 }
 .ActiveOrdersContainer-tabel tr th,.ActiveOrdersContainer-tabel tr td {
-  border: 1px solid rgb(0, 0, 0);
+ 
+
+  text-align: center;
+  border-bottom: 1px solid var(--grayColor);
   padding: 0.5rem;
   text-align: center;
 
