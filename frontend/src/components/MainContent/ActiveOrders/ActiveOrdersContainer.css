@@ -1,6 +1,44 @@
 .ActiveOrdersContainer-container{
   width: 100%;
   height: 70%;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(177, 177, 177);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.ActiveOrdersContainer-scrollable{
+  overflow-y: scroll;
+  width: 100%;
+  
+ 
+}
+.ActiveOrdersContainer-tabel{
+  table-layout: auto;
+  width: 100%;  
+  border-collapse: collapse;
+  border: 1px solid rgb(228, 206, 206);
+  text-align: left;
+  position: relative;
+  border-collapse: collapse; 
+ 
+}
+.ActiveOrdersContainer-tabel tbody{
+
+ 
 
 }
+.ActiveOrdersContainer-tabel tr th{
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  background-color: blue;
+}
+.ActiveOrdersContainer-tabel tr th,.ActiveOrdersContainer-tabel tr td {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 1rem;
+  text-align: center;
+
+}
+
