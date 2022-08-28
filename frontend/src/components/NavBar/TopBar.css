@@ -1,0 +1,12 @@
+.TopBar-container{
+  
+  background-color: var(--secondBackground);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+}

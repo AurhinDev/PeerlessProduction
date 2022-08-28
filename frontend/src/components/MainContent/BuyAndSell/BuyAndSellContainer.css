@@ -1,0 +1,32 @@
+.BuyAndSellContainer-container{
+  width: 100% - 2rem;
+  height: 30%;
+  background-color: rgb(193, 193, 193);
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.BuyAndSellContainer-form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+  flex-direction: column;
+ justify-content: space-evenly;
+  
+
+  
+  
+}
+.BuyAndSellContainer-form-buttons{
+
+}
+.BuyAndSellContainer-form-input input{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+.BuyAndSellContainer-form-submitButton{
+  width: 20%;
+}

@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-// HELLO
+import React, { useState } from "react";
+import Layout from "./components/Layout";
+import { NetworkContext, CurrencyContext } from "./helper/Context";
+
 function App() {
+  const [network, setNetwork] = useState("NetworkOne");
+  const [currency, setCurrency] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NetworkContext.Provider value={{ network, setNetwork }}>
+      <CurrencyContext.Provider value={{ currency, setCurrency }}>
+      
+      <div className="App">
+        <Layout />
+      </div>
+
+      </CurrencyContext.Provider >
+    </NetworkContext.Provider>
   );
 }
 

@@ -1,0 +1,21 @@
+.MainContainer-container{
+
+  width: calc(100%-2rem);
+  height: 100%;
+  background-color: var(--mainBackground);
+  overflow: hidden;
+  padding: 2rem;
+  padding-top: 5rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.MainContainer-sideContent{
+  width: 40%;
+  height: 88.5vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
