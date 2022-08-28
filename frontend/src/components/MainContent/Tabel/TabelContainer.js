@@ -11,7 +11,7 @@ function TabelContainer(props) {
   
   return (
     <div className="TabelContainer-container">
-      <h2>Orders</h2>
+      <div className="header-info"><h2> ORDERS</h2><h5>All contract available in the network</h5></div>
       <div className='TabelContainer-scrollable standardShadow'>
       <table className="TabelContainer-tabel ">
         <thead>

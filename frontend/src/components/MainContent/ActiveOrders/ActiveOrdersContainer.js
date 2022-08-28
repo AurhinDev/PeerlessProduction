@@ -5,7 +5,7 @@ function ActiveOrdersContainer(props) {
   
   return (
     <div className='ActiveOrdersContainer-container  '>
-      <h2> My Orders</h2>
+      <div className="header-info"><h2> MY ORDERS</h2><h5>Orders I've made or am trying to buy</h5></div>
       <div className='ActiveOrdersContainer-scrollable standardShadow '>
       <table className="ActiveOrdersContainer-tabel ">
         <thead>

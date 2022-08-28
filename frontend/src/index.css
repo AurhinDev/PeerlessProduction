@@ -44,6 +44,11 @@ h4,
 h5 {
   margin: 0;
 }
+
+h5 {
+  font-weight: 300;
+  font-size: 1rem;
+}
 h1,
 h2,
 h3, label{
@@ -179,4 +184,10 @@ h2{
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(177, 177, 177);
   border-radius: 0.2rem;
+}
+.header-info{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; 
+  gap: 1rem;
 }
