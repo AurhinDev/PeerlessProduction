@@ -7,6 +7,8 @@ import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "./PeerlessFactory.sol";
+import "hardhat/console.sol";
+
 
 contract Peer is ReentrancyGuard {
 
@@ -44,6 +46,7 @@ contract Peer is ReentrancyGuard {
     }
 
     struct Order {
+        uint id;
         address payable owner;
         bool filled;
         bool cancelled;
@@ -93,10 +96,16 @@ contract Peer is ReentrancyGuard {
         require(_evmCurrency > 0 && _token > 0, 'Too low order');
         require(msg.value > GetCostWithFee(_evmCurrency), 'Insufficient EVM Currency + Fee');
          
-        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, true, block.timestamp, orderList.length);
-        orderList.push(order);
-        allOrders[orderId] = order;
-        ordersByOwner[msg.sender].push(orderId);
+        // console.log(
+        //     "PostBuyOrder",
+        //     msg.value,
+        //     _evmCurrency,
+        //     _token
+        // );
+
+
+        Order memory order = Order(orderId, payable(msg.sender), false, false, _evmCurrency, _token, true, block.timestamp, orderList.length);
+        PushOrder(order);
         _buyOrdersPosted += 1;
 
         emit BuyTokenOrder(msg.sender, orderId, _evmCurrency, _token);
@@ -105,16 +114,21 @@ contract Peer is ReentrancyGuard {
         evmCurrencyFeesCollected += GetCostWithFee(_evmCurrency) - _evmCurrency;
     }
 
+    function PushOrder(Order memory _order) internal {
+        orderList.push(_order);
+        allOrders[orderId] = _order;
+        ordersByOwner[msg.sender].push(orderId);
+        //console.log(_order);
+    }
+
     // SELL TOKEN FOR EVM CURRENCY
     function PostSellOrder(uint _evmCurrency, uint _token) external notFrozen() {
         require(token.balanceOf(msg.sender) > GetCostWithFee(_token), "Insufficient Token");
         
         token.transferFrom(msg.sender, address(this), _token);
         
-        Order memory order = Order(payable(msg.sender), false, false, _evmCurrency, _token, false, block.timestamp, orderList.length);
-        orderList.push(order);
-        allOrders[orderId] = order;
-        ordersByOwner[msg.sender].push(orderId);
+        Order memory order = Order(orderId, payable(msg.sender), false, false, _evmCurrency, _token, false, block.timestamp, orderList.length);
+        PushOrder(order);
         _sellOrdersPosted += 1;
         emit SellTokenOrder(msg.sender, orderId, _token, _evmCurrency);
         orderId++;
@@ -191,22 +205,38 @@ contract Peer is ReentrancyGuard {
         //RemoveOrderFromList(_orderId);
     }
 
-    function GetCostWithFee(uint amount) internal view returns (uint) {
-        return amount * fee / 100;
+    function GetCostWithFee(uint amount) public view returns (uint) {
+        return amount * (100 + fee) / 100;
     }
 
-    function RemoveOrderFromList(uint256 _orderID) internal {
-        require(allOrders[_orderID].filled || allOrders[_orderID].cancelled, 'Order must be filled or cancelled');
+    // function RemoveOrderFromList(uint256 _orderID) internal {
+    //     require(allOrders[_orderID].filled || allOrders[_orderID].cancelled, 'Order must be filled or cancelled');
 
-        uint256 indexInArray = allOrders[_orderID].indexInOrderList;
-        orderList[indexInArray] = orderList[orderList.length - 1];
-        allOrders[_orderID].indexInOrderList = indexInArray;
-        orderList.pop();
-    }
+    //     uint256 indexInArray = allOrders[_orderID].indexInOrderList;
+    //     orderList[indexInArray] = orderList[orderList.length - 1];
+    //     allOrders[_orderID].indexInOrderList = indexInArray;
+    //     orderList.pop();
+    // }
+
+    // function CancelOrder(uint256 _orderID) external {
+    //     require(!allOrders[_orderID].filled || !allOrders[_orderID].cancelled, 'Order cant be filled or cancelled');
+    //     require(allOrders[_orderID].owner == msg.sender, "Not order owner");
+    //     allOrders[_orderID].cancelled = true;
+    // }
 
     function WithdrawFees() nonReentrant() onlyOwner() external {
         token.transfer(owner, tokenFeesCollected);
         owner.transfer(evmCurrencyFeesCollected);
+    }
+
+    function CancelOrder(uint _orderID) external {
+        require(address(allOrders[_orderID].owner) == msg.sender, "Not order owner");
+        allOrders[_orderID].cancelled = true;
+        for (uint256 i = 0; i < orderList.length; i++) {
+            if (orderList[i].id == _orderID) {
+                orderList[i].cancelled = true;
+            }
+        }
     }
 
     // Return payment for each order to each user
@@ -226,20 +256,7 @@ contract Peer is ReentrancyGuard {
         }
     }
 
-    /*
-
-    struct Order {
-        address payable owner;
-        bool filled;
-        bool cancelled;
-        uint evmCurrency; //ETH, MATIC etc
-        uint token;
-        bool buyToken;
-        uint indexInOrderList;
-    }
-    */
-
-    function getContractMaticBalance() public view returns(uint){
+    function getContractEVMBalance() public view returns(uint){
         return address(this).balance;
     }
     function getContractTokenBalance() public view returns(uint){
@@ -261,8 +278,8 @@ contract Peer is ReentrancyGuard {
         return _ordersCancelled;
     }
 
-    function getOrderByID(uint _id) public view returns (address payable, bool, bool, uint, uint, bool) {
-        return (allOrders[_id].owner, allOrders[_id].filled, allOrders[_id].cancelled, allOrders[_id].evmCurrency, allOrders[_id].token, allOrders[_id].buyToken);
+    function getOrderByID(uint _id) public view returns (uint, address payable, bool, bool, uint, uint, bool) {
+        return (allOrders[_id].id, allOrders[_id].owner, allOrders[_id].filled, allOrders[_id].cancelled, allOrders[_id].evmCurrency, allOrders[_id].token, allOrders[_id].buyToken);
     }
 
     function getOrdersByOwner(address _owner) public view returns (uint[] memory) {
@@ -272,5 +289,4 @@ contract Peer is ReentrancyGuard {
     function getAllActiveOrder() public view returns (Order[] memory) {
         return orderList;
     }
-    //Add
 }

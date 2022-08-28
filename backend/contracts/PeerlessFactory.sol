@@ -15,9 +15,9 @@ contract PeerlessFactory {
     uint public addPeerFee  = 20 * 1e18; // 20 MATIC
     uint public peerID = 0;
 
-    mapping(uint => PeerStruct) peerById;
-    mapping(address => bool) peerRegistered;
-    mapping(address => PeerStruct) peerByOwnerAdr;
+    mapping(uint => PeerStruct) public peerById;
+    mapping(address => bool) public peerRegistered;
+    mapping(address => PeerStruct) public peerByOwnerAdr;
 
     PeerStruct[] peers;
     
@@ -29,6 +29,7 @@ contract PeerlessFactory {
     struct PeerStruct {
         address owner;
         address peerAdr;
+        address tokenAdr;
         uint peerID;
         uint dateCreated;
         string name;
@@ -45,15 +46,16 @@ contract PeerlessFactory {
         Peer newPeer = new Peer(address(this), name, adr, tradeFee, peerID);
         PeerStruct memory peer = PeerStruct(
             msg.sender, 
-            address(newPeer), 
+            address(newPeer),
+            adr,
             peerID, 
             block.timestamp, 
             name,
-            true
+            false
             );
 
         peerById[peerID] = peer;
-        peerRegistered[address(newPeer)] = true;
+        peerRegistered[adr] = true;
         peerByOwnerAdr[msg.sender] = peer;
         peers.push(peer);
         peerID += 1;
@@ -61,7 +63,7 @@ contract PeerlessFactory {
 
     function WithdrawFees() external onlyOwner() {
         for (uint256 i = 0; i < peers.length; i++) {
-            Peer(peers[i].tokenAdr).WithdrawFees();
+            Peer(peers[i].peerAdr).WithdrawFees();
         }
     }
 
