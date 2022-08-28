@@ -1,55 +1,45 @@
-.TabelContainer-container{
+.TabelContainer-container {
   width: 60%;
-  height: 88.5vh;
- 
+  height: calc(100%-2rem);
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
-  
-
 }
-.TabelContainer-scrollable{
+.TabelContainer-scrollable {
   width: 100%;
-  height: 100%;
+
   overflow-y: scroll;
   background-color: var(--muteColor2);
   border-radius: 0.4rem;
-
 }
-.TabelContainer-tabel{
-  
+.TabelContainer-tabel {
   table-layout: auto;
-  width: 100%;  
+  width: 100%;
   border-collapse: collapse;
- 
+
   text-align: left;
   position: relative;
-  border-collapse: collapse; 
-
+  border-collapse: collapse;
 }
-.TabelContainer-tabel tr th,.TabelContainer-tabel tr td {
-  border-bottom: 1px solid rgb(144, 144, 144);
+.TabelContainer-tabel tr th,
+.TabelContainer-tabel tr td {
+  border-bottom: 1px solid var(--grayColor);;
   padding: 0.5rem;
   text-align: center;
 }
-.TabelContainer-first-row{
+.TabelContainer-first-row {
   position: sticky;
   top: -1px; /* Don't forget this, required for the stickiness */
-    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
   background-color: var(--mainColor2);
-  
 }
 
-.TabelContainer-tabel tr td{
-  background-color: var(--muteColor2)
-
+.TabelContainer-tabel tr td {
+  background-color: var(--muteColor2);
 }
-.TabelContainer-row{
-
+.TabelContainer-row {
 }
-.TabelContainer-cell{
-  
+.TabelContainer-cell {
 }
-

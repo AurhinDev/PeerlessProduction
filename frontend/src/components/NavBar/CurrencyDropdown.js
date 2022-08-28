@@ -34,7 +34,7 @@ function CurrencyDropdown(props) {
   return (
     <div className="dropDown-container">
       <h3>Currency</h3>
-      <div class="select-dropdown">
+      <div className="select-dropdown">
         <select onChange={(e) => handleChange(e)}>{listItems}</select>
       </div>
     </div>

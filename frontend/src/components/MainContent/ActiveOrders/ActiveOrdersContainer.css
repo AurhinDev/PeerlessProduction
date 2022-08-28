@@ -1,71 +1,61 @@
-.ActiveOrdersContainer-container{
+.ActiveOrdersContainer-container {
   width: 100%;
-  height: 55.5vh;
-  
+  height: 65%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+
+ 
   flex-direction: column;
   gap: 0.5rem;
+}
+@media screen and (min-height: 0px) and (max-height: 800px) {
   
 }
-.ActiveOrdersContainer-scrollable{
-  overflow-y: scroll;
+.ActiveOrdersContainer-scrollable {
   width: 100%;
+  height: auto;
+  overflow-y: scroll;
   background-color: var(--muteColor2);
   border-radius: 0.4rem;
 }
-.ActiveOrdersContainer-tabel{
+.ActiveOrdersContainer-tabel {
   table-layout: auto;
-  width: 100%;  
+  width: 100%;
   border-collapse: collapse;
-  
-  
+
   text-align: left;
   position: relative;
-  border-collapse: collapse; 
- 
+  border-collapse: collapse;
 }
-.ActiveOrdersContainer-tabel tbody{
-
- 
-
+.ActiveOrdersContainer-tabel tbody {
 }
-.ActiveOrdersContainer-tabel tr th{
+.ActiveOrdersContainer-tabel tr th {
   position: sticky;
   top: -1px; /* Don't forget this, required for the stickiness */
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
   background-color: var(--mainColor2);
   z-index: 1;
-  
- 
 }
-.ActiveOrdersContainer-tabel tr td{
+.ActiveOrdersContainer-tabel tr td {
   background-color: var(--muteColor2);
-  
-
 }
-.ActiveOrdersContainer-tabel tr th,.ActiveOrdersContainer-tabel tr td {
- 
-
+.ActiveOrdersContainer-tabel tr th,
+.ActiveOrdersContainer-tabel tr td {
   text-align: center;
   border-bottom: 1px solid var(--grayColor);
   padding: 0.5rem;
   text-align: center;
-
 }
 
-.ActiveOrdersContainer-cancel{
+.ActiveOrdersContainer-cancel {
   background-color: var(--secondColor1);
 }
 
 .ActiveOrdersContainer-cancel:hover,
 .ActiveOrdersContainer-cancel:focus {
   background-color: var(--secondColor2);
-  
 }
 
 .ActiveOrdersContainer-cancel:active {
   background-color: var(--secondColor2);
- 
 }
+

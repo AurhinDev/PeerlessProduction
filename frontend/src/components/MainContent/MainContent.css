@@ -1,21 +1,25 @@
 .MainContainer-container{
 
   width: calc(100%-2rem);
-  height: 100%;
+  height: 88vh;
   
   overflow: hidden;
-  padding: 2rem;
-  padding-top: 5rem;
+  padding: 4vh;
+  padding-top: 8vh;
   display: flex;
-  gap: 2rem;
+  gap: 4vh;
 }
 
-.MainContainer-sideContent{
+.MainContainer-side{
   width: 40%;
-  height: 88.5vh;
-
+  height: 84vh;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 4vh;
+ 
+
+ 
+
 
 }

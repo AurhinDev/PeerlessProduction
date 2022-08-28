@@ -9,9 +9,12 @@ function MainContainer(props) {
   return (
     <div className="MainContainer-container">
       <TabelContainer />
-      <div className="MainContainer-sideContent">
-        <BuyAndSellContainer />
-        <ActiveOrdersContainer />
+      
+      <div className="MainContainer-side">
+     
+      <BuyAndSellContainer /> 
+      <ActiveOrdersContainer />
+         
       </div>
     </div>
   );
