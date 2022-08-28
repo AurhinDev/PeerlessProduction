@@ -44,14 +44,6 @@ const SimpleStorage = () => {
         200, // Token
         100  // EVM Currency
     }
-    /*
-    event BuyTokenOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
-    event SellTokenOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
-    event CancelledOrder(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
-    event BuyTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
-    event SellTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
-
-    */
 
 	// deploy simple storage contract and paste deployed contract address here. This value is local ganache chain
 	//let contractAddress = '0xCF31E7c9E7854D7Ecd3F3151a9979BC2a82B4fe3';
@@ -67,7 +59,7 @@ const SimpleStorage = () => {
 
     /*
         BASICS:
-        
+
         1. Dropdown show hardcoded networks
         2. When network is chosen, set factory address, make factoryContract object
             let factoryContract = new ethers.Contract(factoryAddress, Factory_abi, tempSigner);
@@ -117,7 +109,7 @@ const SimpleStorage = () => {
 
         SELL ORDER
 
-        peerContract.methods.PostSellOrder(evmAmount, tokenAmount);
+        peerContract.methods.PostSellOrder(evmAmount, tokenAmount 1*0.2);
 
 
         FILL ORDER
