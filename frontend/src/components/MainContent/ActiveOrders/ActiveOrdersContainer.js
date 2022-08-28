@@ -19,113 +19,124 @@ function ActiveOrdersContainer(props) {
           </tr>
         </thead>
         <tbody>
+        <tr className="ActiveOrdersContainer-row">
+            <td>1</td>
+            <td>BUY</td>
+            <td>USD</td>
+            <td>EURO</td>
+            <td>2022-08-28</td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
+          </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
-          
+         
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
-          
+         
+
           <tr className="ActiveOrdersContainer-row">
             <td>1</td>
             <td>BUY</td>
             <td>USD</td>
             <td>EURO</td>
             <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
+            <td><button className='button-5 ActiveOrdersContainer-cancel'>Cancel</button></td>
           </tr>
-          
-          <tr className="ActiveOrdersContainer-row">
-            <td>1</td>
-            <td>BUY</td>
-            <td>USD</td>
-            <td>EURO</td>
-            <td>2022-08-28</td>
-            <td><button>Cancel</button></td>
-          </tr>
+         
           
 
 

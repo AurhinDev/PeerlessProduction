@@ -1,4 +1,7 @@
-html, body, .App {
+@import url(https://fonts.googleapis.com/css?family=Inter);
+html,
+body,
+.App {
   margin: 0%;
   padding: 0;
   color: white;
@@ -6,25 +9,132 @@ html, body, .App {
   width: 100vw;
   overflow: hidden;
 
+  background-color: var(--muteColor1);
+
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
 }
 
-.centerInDiv{
+.centerInDiv {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.noMarginNoPadding{
+.noMarginNoPadding {
   margin: 0;
   padding: 0;
 }
 
-:root{
-  --mainColor: rgb(28, 202, 255);
-  --secondColor:  rgb(153, 14, 14);
-  --mainBackground: rgb(38, 37, 39) ;
-  --secondBackground: rgb(26, 21, 54) ;
+:root {
+  --mainColor1: #042c71;
+  --mainColor2: #084387;
+  --mainColor3: #0b6ab0;
+  --secondColor1: #ce4912;
+  --secondColor2: #f36b1c;
+  --muteColor1: rgb(12, 12, 12);
+  --muteColor2: rgb(54, 54, 54);
 }
-h1, h2, h3, h4, h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: "Inter";
+}
+
+/* CSS */
+.button-5 {
+  align-items: center;
+  background-clip: padding-box;
+
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+
+  padding: 0.2rem 1rem;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-5:hover,
+.button-5:focus {
+  
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+
+/* CSS */
+.button-23 {
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+.button-23:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow .2s;
+}
+
+.button-23:active {
+  background-color: #F7F7F7;
+  border-color: #000000;
+  transform: scale(.96);
+}
+
+.button-23:disabled {
+  border-color: #DDDDDD;
+  color: #DDDDDD;
+  cursor: not-allowed;
+  opacity: 1;
 }

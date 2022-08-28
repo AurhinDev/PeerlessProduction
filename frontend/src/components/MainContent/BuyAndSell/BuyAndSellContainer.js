@@ -21,21 +21,24 @@ function BuyAndSellContainer(props) {
   }
   return (
     <div className=" centerInDiv BuyAndSellContainer-container  ">
+      <div className="BuyAndSellContainer-HeaderAndButtons">
       {buy?<h2> Buy STONKS</h2>:<h2> Sell STONKS</h2> }
-      <form className="BuyAndSellContainer-form">
-        <div className="BuyAndSellContainer-form-buttons">
-          <button  type="button" onClick={handleBuyAndSell} value="buy" className="BuyButton">
+      <div className="BuyAndSellContainer-form-buttons">
+          <button  type="button" onClick={handleBuyAndSell} value="buy" className="BuyButton button-5">
             Buy
           </button>
 
           <button  type="button"
             onClick={handleBuyAndSell}
             value="sell"
-            className="SellButton"
+            className="SellButton button-5"
           >
             Sell
           </button>
         </div>
+        </div>
+      <form className="BuyAndSellContainer-form" style={{backgroundColor: buy? "rgb(22, 156, 20, 0.8)": "rgb(192, 15, 15, 0.8)"}}>
+        
 
         <div className="BuyAndSellContainer-form-input">
           <label htmlFor="evm">EVM</label>
@@ -46,7 +49,7 @@ function BuyAndSellContainer(props) {
           <input type="text" id="token" name="token" />
         </div>
 
-        <button  className="BuyAndSellContainer-form-submitButton" type="button" onClick={handleSubmit}>Sumbit</button>
+        <button  className="button-23 BuyAndSellContainer-form-submitButton " type="button" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );

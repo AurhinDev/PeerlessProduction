@@ -1,32 +1,82 @@
-.BuyAndSellContainer-container{
+.BuyAndSellContainer-container {
   width: 100% - 2rem;
-  height: 30%;
-  background-color: rgb(193, 193, 193);
-  padding: 2rem;
+  height: 30vh;
+
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.BuyAndSellContainer-form{
+.BuyAndSellContainer-HeaderAndButtons {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.BuyAndSellContainer-form-buttons {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+.BuyButton {
+  margin-right: 1rem;
+  background-color: rgb(22, 156, 20);
+}
+.BuyButton:hover,.BuyButton:focus  {
+  background-color: rgb(39, 206, 36);
+}
+.SellButton {
+  margin-right: 1rem;
+  background-color: rgb(192, 15, 15);
+}
+.SellButton:hover,.SellButton:focus   {
+  background-color: rgb(232, 23, 23);
+}
+
+.BuyAndSellContainer-form {
+  width: 80%;
   height: 100%;
   display: flex;
-  
+  padding: 0% 10%;
   flex-direction: column;
- justify-content: space-evenly;
-  
+  justify-content: center;
 
-  
-  
+  background-color:rgba(45, 15, 237, 0.543);
 }
-.BuyAndSellContainer-form-buttons{
 
-}
-.BuyAndSellContainer-form-input input{
+.BuyAndSellContainer-form-input {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  
+}
+.BuyAndSellContainer-form-input label{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.BuyAndSellContainer-form-input input {
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
+}
+.BuyAndSellContainer-form-submitButton {
+  width: 30%;
+  /* background-color: var(--mainColor1);
+  font-size: 1.2rem; */
+  
 
 }
-.BuyAndSellContainer-form-submitButton{
-  width: 20%;
+/* 
+.BuyAndSellContainer-form-submitButton:hover,
+.BuyAndSellContainer-form-submitButton:focus {
+  background-color: var(--mainColor2);
 }
+
+.BuyAndSellContainer-form-submitButton:active {
+  background-color: var(--mainColor2);
+}
+ */

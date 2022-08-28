@@ -2,7 +2,7 @@
 
   width: calc(100%-2rem);
   height: 100%;
-  background-color: var(--mainBackground);
+  
   overflow: hidden;
   padding: 2rem;
   padding-top: 5rem;

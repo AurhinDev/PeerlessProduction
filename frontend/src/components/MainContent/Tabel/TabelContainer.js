@@ -8,16 +8,10 @@ function TabelContainer(props) {
   const { network, setNetwork } = useContext(NetworkContext);
   const { currency, setCurrency } = useContext(CurrencyContext);
   
-
-
- 
-
- 
-  
-
   return (
     <div className="TabelContainer-container">
-      
+      <h2>Orders</h2>
+      <div className='TabelContainer-scrollable'>
       <table className="TabelContainer-tabel">
         <thead>
           <tr className="TabelContainer-first-row">
@@ -73,8 +67,131 @@ function TabelContainer(props) {
             <td>PUNG</td>
             <td>2022-08-22</td>
           </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          <tr className="TabelContainer-row">
+            <td>6</td>
+            <td>SELL</td>
+            <td>MONEY</td>
+            <td>PUNG</td>
+            <td>2022-08-22</td>
+          </tr>
+          
+
         </tbody>
-      </table>
+      </table> 
+    </div>
     </div>
   );
 }
