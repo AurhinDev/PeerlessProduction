@@ -22,8 +22,20 @@ function BuyAndSellContainer(props) {
   return (
     <div className=" centerInDiv BuyAndSellContainer-container  ">
       <div className="BuyAndSellContainer-HeaderAndButtons">
-        {buy ? <div className="header-info"><h2> BUY</h2><h5>Make buy order</h5></div> : <div className="header-info"><h2> SELL</h2><h5>Make sell order</h5></div>}
+       
+        {buy ? (
+          <div className="header-info">
+            <h2> BUY</h2>
+            <h5>Make buy order</h5>
+          </div>
+        ) : (
+          <div className="header-info">
+            <h2> SELL</h2>
+            <h5>Make sell order</h5>
+          </div>
+        )}
         <div className="BuyAndSellContainer-form-buttons">
+        <h5 className="header-info">Toggle Action</h5>
           <button
             type="button"
             onClick={handleBuyAndSell}
@@ -65,18 +77,19 @@ function BuyAndSellContainer(props) {
           <label htmlFor="token">TOKEN</label>
           <input type="text" id="token" name="token" />
         </div>
-        
+
         {buy ? (
           <button
-            className="button-23 BuyAndSellContainer-form-submitButton "
+            className="button-23 button-23-green BuyAndSellContainer-form-submitButton "
             type="button"
             onClick={handleSubmit}
+         
           >
             Buy Contract
           </button>
         ) : (
           <button
-            className="button-23 BuyAndSellContainer-form-submitButton "
+            className="button-23 button-23-red BuyAndSellContainer-form-submitButton "
             type="button"
             onClick={handleSubmit}
           >

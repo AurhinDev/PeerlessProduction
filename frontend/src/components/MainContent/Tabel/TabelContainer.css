@@ -6,6 +6,7 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
+  z-index: 1;
 }
 .TabelContainer-scrollable {
   width: 100%;
@@ -23,17 +24,22 @@
   position: relative;
   border-collapse: collapse;
 }
+
 .TabelContainer-tabel tr th,
 .TabelContainer-tabel tr td {
-  border-bottom: 1px solid var(--grayColor);;
+  border-bottom: 1px solid var(--grayColor);
   padding: 0.5rem;
   text-align: center;
 }
+.TabelContainer-tabel  tr:nth-child(even) td{
+  background-color: var(--muteColor4);
+}
+
 .TabelContainer-first-row {
   position: sticky;
   top: -1px; /* Don't forget this, required for the stickiness */
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
-  background-color: var(--mainColor2);
+  background-color: var(--mainColor1);
 }
 
 .TabelContainer-tabel tr td {

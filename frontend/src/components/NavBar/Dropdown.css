@@ -7,6 +7,7 @@
 }
 .dropDown-container h3{
   margin-right: 1rem;
+  font-weight: 300;
 } 
 .select-dropdown,
 .select-dropdown * {
@@ -16,16 +17,17 @@
   box-sizing: border-box;
 }
 .select-dropdown {
+ 
   position: relative;
-  background-color: #E6E6E6;
-  border-radius: 4px;
+  background-color: var(--mainColor2);
+  border-radius: 0.15rem;
 }
 .select-dropdown select {
   font-size: 1rem;
-
+  color: white;
   font-weight: normal;
   max-width: 100%;
-  padding: 8px 36px 8px 10px;
+  padding: 8px 48px 8px 24px;
   border: none;
   background-color: transparent;
     -webkit-appearance: none;
@@ -48,3 +50,8 @@
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
+
+.select-dropdown option{
+  background-color: var(--mainColor2);
+  
+} 

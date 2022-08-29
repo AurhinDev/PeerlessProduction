@@ -14,6 +14,9 @@
     
   }
 }
+.ActiveOrdersContainer-tabel  tr:nth-child(even) td{
+  background-color: var(--muteColor4);
+}
 .ActiveOrdersContainer-scrollable {
   width: 100%;
   height: auto;
@@ -37,7 +40,7 @@
   position: sticky;
   top: -1px; /* Don't forget this, required for the stickiness */
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
-  background-color: var(--mainColor2);
+  background-color: var(--mainColor1);
   z-index: 1;
 }
 .ActiveOrdersContainer-tabel tr td {

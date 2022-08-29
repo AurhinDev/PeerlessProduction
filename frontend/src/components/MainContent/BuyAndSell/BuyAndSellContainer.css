@@ -1,12 +1,8 @@
 .BuyAndSellContainer-container {
-
-
-
-
   justify-content: flex-start;
   flex-direction: column;
   gap: 0.5rem;
- 
+  z-index: 1;
 }
 
 .BuyAndSellContainer-HeaderAndButtons {
@@ -14,6 +10,10 @@
   display: flex;
   justify-content: space-between;
 }
+.BuyAndSellContainer-HeaderAndButtons h5 {
+  margin-right: 1rem;
+}
+
 
 .BuyAndSellContainer-form-buttons {
   display: flex;
@@ -24,27 +24,40 @@
   margin-right: 1rem;
   background-color: rgb(22, 156, 20);
 }
-.BuyButton:hover,.BuyButton:focus  {
+.BuyButton:hover,
+.BuyButton:focus {
   background-color: rgb(39, 206, 36);
 }
 .SellButton {
   margin-right: 1rem;
   background-color: rgb(192, 15, 15);
 }
-.SellButton:hover,.SellButton:focus   {
+.SellButton:hover,
+.SellButton:focus {
   background-color: rgb(232, 23, 23);
 }
-.BuyAndSellContainer-form-greenShadow{
+.BuyAndSellContainer-form-greenShadow {
   box-shadow: rgb(22, 156, 20) 5px 5px 20px;
-
 }
-.BuyAndSellContainer-form-redShadow{
+.BuyAndSellContainer-form-redShadow {
   box-shadow: rgb(192, 15, 15) 5px 5px 20px;
-
 }
-.BuyAndSellContainer-HeaderAndButtons h2{
+.button-23-green {
+  background-color: rgb(22, 156, 20);
+  color: white;
+  text-shadow: 1px black;
 }
-
+.button-23-green:hover {
+  background-color: rgb(39, 206, 36);
+}
+.button-23-red {
+  background-color: rgb(192, 15, 15);
+  color: white;
+  text-shadow: 1px black;
+}
+.button-23-red:hover {
+  background-color: rgb(232, 23, 23);
+}
 .BuyAndSellContainer-form {
   width: 80%;
 
@@ -53,7 +66,7 @@
   flex-direction: column;
   justify-content: center;
   border-radius: 0.4rem;
-  background-color:rgba(45, 15, 237, 0.543);
+  background-color: rgba(45, 15, 237, 0.543);
 }
 
 .BuyAndSellContainer-form-input {
@@ -62,9 +75,8 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1vh;
-  
 }
-.BuyAndSellContainer-form-input label{
+.BuyAndSellContainer-form-input label {
   font-size: 1rem;
   font-weight: 1000;
   margin-bottom: 0.2rem;
@@ -82,6 +94,4 @@
   font-size: 1.2rem;
   margin: auto;
   margin-top: 1rem;
-  
-
 }

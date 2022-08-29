@@ -8,6 +8,7 @@
   padding-top: 8vh;
   display: flex;
   gap: 4vh;
+ 
 }
 
 .MainContainer-side{
@@ -23,3 +24,29 @@
 
 
 }
+.connectButton{
+  background-color: var(--mainColor2);
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  margin: 2rem;
+}
+
+.connectButton:hover{
+  background-color: var(--mainColor3);
+}
+.connectText{
+  display: flex;
+  flex-direction: column;
+}
+.connectText h2{
+font-size: 6rem;
+}
+.connectText h3{
+  font-size: 2rem;
+
+  }
+  .connectText p{
+    font-size: 1rem;
+    margin: 0;
+  
+    }
