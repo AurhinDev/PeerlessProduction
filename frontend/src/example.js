@@ -152,6 +152,24 @@ const SimpleStorage = () => {
             })
         }
 
+
+        FETCH ORDER ONE BY ONE
+let orderCount,orders;
+try {
+     orderCount = await ContractName.methods.orderId().call();
+       
+    orders = await Promise.all(
+      Array(parseInt(orderCount))
+        .fill()
+        .map((element, index) => {
+          return ContractName.methods.getOrderByID(index).call();
+        })
+    );
+    
+  } catch (e) {
+    console.log("error in pulling array list", e);
+  }
+        
     */
 
     let peerAddress = "0x0"

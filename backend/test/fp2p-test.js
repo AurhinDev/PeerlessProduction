@@ -54,8 +54,7 @@ describe.only("Tests", function () {
     const Peer = await ethers.getContractFactory("Peer");
     peer = await Peer.deploy(factory.address, "Ink", ink.address, 2, 0);
     await peer.deployed();
-    let ord = await peer.getAllActiveOrder();
-    console.log("Orders", ord);
+
 
 
         // // Inital Checks
@@ -122,14 +121,10 @@ describe.only("Tests", function () {
         // )
         await ink.approve(peer.address, ethers.utils.parseEther("10000"));
         await peer.Approve();
-        await peer.PostSellOrder(
-            (
-                ethers.utils.parseEther(val.toString())
-            ),
-            (
-                ethers.utils.parseEther("1")
-            )
-        );
+        let v = "0.01"
+
+        await peer.PostSellOrder((ethers.utils.parseEther(val.toString())),(ethers.utils.parseEther(v)));
+
         // let order = await peer.getOrdersByOwner(owner.address);
         // //console.log("OrderByOwner: ", order);
         // let o = await peer.getOrderByID(0);
@@ -140,13 +135,24 @@ describe.only("Tests", function () {
         //await fp2p.CancelOrder(0);
         //await expect(peer.connect(operator).CancelOrder(0)).to.be.revertedWith('Not order owner');
         //await expect(peer.CancelOrer(0)).to.be.ok;
-        await peer.CancelOrder(0);
-        let orders = await peer.getAllActiveOrder()
-        let ordersOrg = orders.map(({id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList})=>{ 
-            return {id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList};
-        });
-        console.log("Orders: ", ordersOrg);
+        let orders1 = await peer.getOrderByID(0)
+        let orders2 = await peer.getOrderByID(1)
+        // let ordersOrg = orders.map(({id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList})=>{ 
+        //     return {id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList};
+        // });
+        console.log("Order1: ", orders1);
+        console.log("Order2: ", orders2);
 
+        await peer.CancelOrder(0);
+        let orders3 = await peer.getOrderByID(0)
+        console.log("Order1Cancelled: ", orders3);
+
+        let tf = await peer.getTokenFeesCollected();
+        let ef = await peer.getEVMFeesCollected();
+
+        console.log("Token fees: ", tf);
+        
+        console.log("EVM fees: ", ef);
 
         //TODO
         /*
