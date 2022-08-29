@@ -45,6 +45,8 @@
 }
 .ActiveOrdersContainer-tabel tr td {
   background-color: var(--muteColor2);
+  font-size: 1.1rem;
+
 }
 .ActiveOrdersContainer-tabel tr th,
 .ActiveOrdersContainer-tabel tr td {

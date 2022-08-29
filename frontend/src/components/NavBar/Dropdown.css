@@ -34,9 +34,13 @@
     -moz-appearance: none;
   appearance: none;
 }
+.select-dropdown select:hover{
+  background-color: var(--mainColor3);
+}
 .select-dropdown select:active, .select-dropdown select:focus {
   outline: none;
   box-shadow: none;
+  
 }
 .select-dropdown:after {
   content: "";
@@ -46,7 +50,7 @@
   width: 0;
 
   margin-top: -2px;
-  border-top: 5px solid #aaa;
+  border-top: 5px solid rgb(255, 255, 255);
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
