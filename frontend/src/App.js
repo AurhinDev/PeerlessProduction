@@ -3,7 +3,7 @@ import Layout from "./components/Layout";
 import { NetworkContext, CurrencyContext } from "./helper/Context";
 
 function App() {
-  const [network, setNetwork] = useState("NetworkOne");
+  const [network, setNetwork] = useState("Ethereum");
   const [currency, setCurrency] = useState(null);
   return (
     <NetworkContext.Provider value={{ network, setNetwork }}>

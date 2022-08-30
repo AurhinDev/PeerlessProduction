@@ -6,16 +6,14 @@ import BuyAndSellContainer from "./BuyAndSell/BuyAndSellContainer";
 import ActiveOrdersContainer from "./ActiveOrders/ActiveOrdersContainer";
 function MainContainer(props) {
   const { network, setNetwork } = useContext(NetworkContext);
+
   return (
     <div className="MainContainer-container">
-      <TabelContainer />
-      
       <div className="MainContainer-side">
-     
-      <BuyAndSellContainer /> 
-      <ActiveOrdersContainer />
-         
+        <BuyAndSellContainer />
+        <ActiveOrdersContainer />
       </div>
+      <TabelContainer />
     </div>
   );
 }

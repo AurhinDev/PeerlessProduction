@@ -19,7 +19,7 @@
 .select-dropdown {
  
   position: relative;
-  background-color: var(--mainColor2);
+  background-color: var(--secondColor1);
   border-radius: 0.15rem;
 }
 .select-dropdown select {
@@ -35,7 +35,7 @@
   appearance: none;
 }
 .select-dropdown select:hover{
-  background-color: var(--mainColor3);
+  background-color: var(--secondColor2);
 }
 .select-dropdown select:active, .select-dropdown select:focus {
   outline: none;
@@ -56,6 +56,6 @@
 }
 
 .select-dropdown option{
-  background-color: var(--mainColor2);
-  
+  background-color: var(--secondColor2);
+  padding: 2rem;
 } 

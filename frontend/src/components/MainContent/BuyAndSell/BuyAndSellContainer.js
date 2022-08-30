@@ -22,7 +22,6 @@ function BuyAndSellContainer(props) {
   return (
     <div className=" centerInDiv BuyAndSellContainer-container  ">
       <div className="BuyAndSellContainer-HeaderAndButtons">
-       
         {buy ? (
           <div className="header-info">
             <h2> BUY</h2>
@@ -35,7 +34,7 @@ function BuyAndSellContainer(props) {
           </div>
         )}
         <div className="BuyAndSellContainer-form-buttons">
-        <h5 className="header-info">Toggle Action</h5>
+          <h5 className="header-info">Toggle Action</h5>
           <button
             type="button"
             onClick={handleBuyAndSell}
@@ -56,18 +55,8 @@ function BuyAndSellContainer(props) {
         </div>
       </div>
       <form
-        className="BuyAndSellContainer-form"
-        style={
-          buy
-            ? {
-                backgroundColor:  "rgba(190, 190, 190, 0.20)"/* "rgb(22, 156, 20, 0.3)" */,
-                boxShadow: "rgb(39, 206, 36, 0.3) 5px 5px 20px",
-              }
-            : {
-                backgroundColor: "rgba(190, 190, 190, 0.20)"/* "rgb(192, 15, 15, 0.3)", */,
-                boxShadow: "rgb(192, 15, 15, 0.3)  5px 5px 20px",
-              }
-        }
+        className="BuyAndSellContainer-form standardShadow"
+        
       >
         <div className="BuyAndSellContainer-form-input">
           <label htmlFor="evm">EVM</label>
@@ -83,7 +72,6 @@ function BuyAndSellContainer(props) {
             className="button-23 button-23-green BuyAndSellContainer-form-submitButton "
             type="button"
             onClick={handleSubmit}
-         
           >
             Buy Contract
           </button>

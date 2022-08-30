@@ -1,6 +1,6 @@
 .ActiveOrdersContainer-container {
   width: 100%;
-  height: 70%;
+  min-height: 70%;
   display: flex;
 
  
@@ -57,15 +57,15 @@
 }
 
 .ActiveOrdersContainer-cancel {
-  background-color: var(--secondColor1);
+  background-color: var(--mainColor2);
 }
 
 .ActiveOrdersContainer-cancel:hover,
 .ActiveOrdersContainer-cancel:focus {
-  background-color: var(--secondColor2);
+  background-color: var(--mainColor3);
 }
 
 .ActiveOrdersContainer-cancel:active {
-  background-color: var(--secondColor2);
+  background-color: var(--mainColor3);
 }
 

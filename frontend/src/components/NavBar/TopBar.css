@@ -23,3 +23,11 @@
   font-weight: 300;
   letter-spacing: 0.2rem;
 }
+
+.title-part1{
+  font-weight: 100;
+}
+.title-part2{
+  font-weight: 1000;
+  text-transform: uppercase;
+}

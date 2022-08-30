@@ -9,8 +9,18 @@ body,
   width: 100vw;
   overflow: hidden;
 
-  background: rgb(214,85,10);
+  /*   background: rgb(214,85,10);
 background: linear-gradient(11deg, rgba(214,85,10,1) 0%, rgba(108,50,20,1) 20%, rgba(0,16,45,1) 50%, rgba(0,0,0,1) 74%);
+   */
+  background: var(--mainColor3);
+  background: linear-gradient(
+    11deg,
+    var(--mainColor3) 0%,
+    var(--mainColor2) 20%,
+    rgba(0, 16, 45, 1) 50%,
+    rgba(0, 0, 0, 1) 74%
+  );
+
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
 }
@@ -56,21 +66,21 @@ h5 {
 }
 h1,
 h2,
-h3, label{
+h3,
+label {
   font-family: "Inter";
- 
 }
-h1{
+h1 {
   font-weight: 100;
   margin-left: 2rem;
   letter-spacing: 0.1rem;
 }
 
-h2{
+h2 {
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
 }
-.standardShadow{
+.standardShadow {
   box-shadow: #000000 5px 5px 20px;
 }
 
@@ -107,7 +117,6 @@ h2{
 
 .button-5:hover,
 .button-5:focus {
-  
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
@@ -120,17 +129,17 @@ h2{
   transform: translateY(0);
 }
 
-
 /* CSS */
 .button-23 {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid #222222;
   border-radius: 0.2rem;
   box-sizing: border-box;
   color: #222222;
   cursor: pointer;
   display: inline-block;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 20px;
@@ -141,7 +150,8 @@ h2{
   text-align: center;
   text-decoration: none;
   touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
   width: auto;
@@ -149,27 +159,26 @@ h2{
 
 .button-23:focus-visible {
   box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
+  transition: box-shadow 0.2s;
 }
 
 .button-23:active {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   border-color: #000000;
-  transform: scale(.96);
+  transform: scale(0.96);
 }
 
 .button-23:disabled {
-  border-color: #DDDDDD;
-  color: #DDDDDD;
+  border-color: #dddddd;
+  color: #dddddd;
   cursor: not-allowed;
   opacity: 1;
 }
 
-
 /* Designing for scroll-bar */
 ::-webkit-scrollbar {
   width: 12px;
-  margin-left:  1rem;
+  margin-left: 1rem;
 }
 
 /* Track */
@@ -182,7 +191,6 @@ h2{
 ::-webkit-scrollbar-thumb {
   background: var(--grayColor2);
   border-radius: 0.2rem;
-
 }
 
 /* Handle on hover */
@@ -190,9 +198,14 @@ h2{
   background: rgb(177, 177, 177);
   border-radius: 0.2rem;
 }
-.header-info{
+.header-info {
   display: flex;
   flex-direction: row;
-  align-items: flex-end; 
+  align-items: flex-end;
   gap: 1rem;
+}
+
+.TabelContainer-row-type{
+  font-weight: 500;
+  font-size: 1.1rem;
 }

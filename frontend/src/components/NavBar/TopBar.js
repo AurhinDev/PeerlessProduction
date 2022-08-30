@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./TopBar.css";
-import NetworkDropdown from "./NetworkDropdown";
-import CurrencyDropdown from "./CurrencyDropdown";
+import Dropdowns from "./Dropdowns";
 import { ethers } from "ethers";
 import { motion } from "framer-motion";
 
@@ -13,6 +12,7 @@ function TopBar(props) {
     const signer = provider.getSigner();
     console.log("Account:", await signer.getAddress());
 }; */
+
 
   const coolStats = ["This is Cool", "Yeah Boy", "Cool Stats Comming", "hej kompis"];
   const [count, setCount] = useState(0);
@@ -31,12 +31,12 @@ function TopBar(props) {
   });
 
   useEffect(() => {
-    console.dir("run animation");
+    
   }, [count]);
 
   return (
     <div className="TopBar-container">
-      <h1>PeerlessProduction</h1>
+      <h1><span className="title-part1">Peerless</span><span className="title-part2">Production</span></h1>
       <div className="TopBar-stats">
         <motion.h4
           animate={{ opacity: [0, 1, 1, 1, 0], y: [-50, 1, 1, 1, -50] }}
@@ -46,8 +46,8 @@ function TopBar(props) {
         </motion.h4>
       </div>
       <div className="TopBar-dropdowns">
-        <NetworkDropdown />
-        <CurrencyDropdown />
+        <Dropdowns />
+       {/*  <CurrencyDropdown /> */}
       </div>
     </div>
   );
