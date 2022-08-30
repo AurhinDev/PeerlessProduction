@@ -13,7 +13,7 @@ describe.only("Tests", function () {
     await proxy.deployed();
 
     expect(await proxy.proxyOwner()).to.equal(owner.address);
-
+    
     // Deploy Erc20
     const INKCoin = await ethers.getContractFactory("INKCoin");
     ink = await INKCoin.deploy();
@@ -40,16 +40,17 @@ describe.only("Tests", function () {
     await expect(factory.AddPeer(ink.address, "INK")).to.be.revertedWith("Peer already registered")
     
     await factory.AddPeer(ink2.address, "INK2");
+    
+    let peers2 = await factory.GetPeers();
+    console.log("Peers2", peers2);
+        
 
-    // Peer
-    //let peers2 = await factory.GetPeers();
-    //console.log("Peers", peers);
-
-    let p = await factory.GetPeerByID(0);
+    let factoryPeer = await factory.GetPeerByID(0);
     let p2 = await factory.GetPeerByID(1);
+
     //console.log("P1", p);
     //console.log("P2", p2);
-    console.log("Peers", peers);
+    //console.log("Peers", peers);
 
     const Peer = await ethers.getContractFactory("Peer");
     peer = await Peer.deploy(factory.address, "Ink", ink.address, 2, 0);
@@ -64,7 +65,7 @@ describe.only("Tests", function () {
         expect(await peer.buyOrdersFilled()).to.equal(0);
 
         await ink.mint(peer.address, ethers.utils.parseEther("100"))
-        console.log("Frxst Balance Contract: ", ink.balanceOf(peer.address));
+        //console.log("Frxst Balance Contract: ", ink.balanceOf(peer.address));
 
         await expect(peer.PostBuyOrder(0, 0, {
             value: ethers.utils.parseEther("0")
@@ -77,7 +78,7 @@ describe.only("Tests", function () {
         expect(await peer.GetCostWithFee(1)).to.equal(1);
         expect(await peer.GetCostWithFee(100)).to.equal(102);
         let c = await peer.GetCostWithFee(ethers.utils.parseEther("1.02"))
-        console.log(c);
+        //console.log(c);
         //Ethers sent needs to be more than 2%, not just 2%
         let fee = 1.02;
         let val = 1;
@@ -120,7 +121,9 @@ describe.only("Tests", function () {
         //     }
         // )
         await ink.approve(peer.address, ethers.utils.parseEther("10000"));
-        await peer.Approve();
+        await ink.connect(operator).approve(peer.address, ethers.utils.parseEther("10000"));
+        //await peer.Approve();
+
         let v = "0.01"
 
         await peer.PostSellOrder((ethers.utils.parseEther(val.toString())),(ethers.utils.parseEther(v)));
@@ -140,19 +143,79 @@ describe.only("Tests", function () {
         // let ordersOrg = orders.map(({id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList})=>{ 
         //     return {id, owner, filled, cancelled, evmCurrency, token, buyToken, datecreated, indexInOrderList};
         // });
-        console.log("Order1: ", orders1);
-        console.log("Order2: ", orders2);
+        // console.log("Order1: ", orders1);
+        // console.log("Order2: ", orders2);
 
-        await peer.CancelOrder(0);
-        let orders3 = await peer.getOrderByID(0)
-        console.log("Order1Cancelled: ", orders3);
+        // // await peer.CancelOrder(0);
+        // // let orders3 = await peer.getOrderByID(0)
+        // // console.log("Order1Cancelled: ", orders3);
 
-        let tf = await peer.getTokenFeesCollected();
-        let ef = await peer.getEVMFeesCollected();
+        // let tf = await peer.getTokenFeesCollected();
+        // let ef = await peer.getEVMFeesCollected();
 
-        console.log("Token fees: ", tf);
-        
-        console.log("EVM fees: ", ef);
+        // console.log("Token fees: ", tf); 
+        // console.log("EVM fees: ", ef);
+
+        // await peer.WithdrawFees();
+
+        // let tf2 = await peer.getTokenFeesCollected();
+        // let ef2 = await peer.getEVMFeesCollected();
+
+        // console.log("Token fees: ", tf2); 
+        // console.log("EVM fees: ", ef2);
+    
+        await peer.connect(operator).PostBuyOrder(
+            (
+                ethers.utils.parseEther(val.toString())
+            ),
+            (
+                ethers.utils.parseEther("1")
+            ), 
+            {
+                value: ethers.utils.parseEther((val+fee+1).toString())
+            }
+        )
+
+
+
+
+        let b1 = await ethers.provider.getBalance(owner.address);
+        let b2 = await ethers.provider.getBalance(operator.address);
+        console.log("BALANCE", b1)
+        console.log("BALANCE", b2)
+        // expect(await peer.FillBuyTokenOrder(2)).to.be.ok;
+        // expect(await peer.connect(operator).FillSellTokenOrder(1,
+        //     {
+        //         value: ethers.utils.parseEther("3")
+        //     })).to.be.ok;
+
+            // let orders4 = await peer.getOrderByID(1)
+            // console.log("Orders1Filled: ", orders4);
+            let orders5 = await peer.getOrderByID(2)
+            console.log("Orders2: ", orders5);
+
+        await peer.FillBuyTokenOrder(2)
+
+        let orders6 = await peer.getOrderByID(2)
+        console.log("Orders2Filled: ", orders6);
+
+        let orders4 = await peer.getOrderByID(1)
+        console.log("Orders1: ", orders4);
+        await peer.connect(operator).FillSellTokenOrder(1,
+                {
+                    value: ethers.utils.parseEther("3")
+                })
+        let orders7 = await peer.getOrderByID(1)
+        console.log("Orders1Filled: ", orders7);    
+        // await peer.connect(operator).FillSellTokenOrder(1,
+        //     {
+        //         value: ethers.utils.parseEther("3")
+        //     })
+
+        // let orders4 = await peer.getOrderByID(1)
+        // console.log("Orders1Filled: ", orders4);
+        // let orders5 = await peer.getOrderByID(2)
+        // console.log("Orders2Filled: ", orders5);
 
         //TODO
         /*

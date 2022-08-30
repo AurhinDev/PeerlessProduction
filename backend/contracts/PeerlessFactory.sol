@@ -7,12 +7,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "./Peer.sol";
 
+
 contract PeerlessFactory {
 
     address payable private owner;
 
     uint public tradeFee = 102; //2%
-    uint public addPeerFee  = 20 * 1e18; // 20 MATIC
     uint public peerID = 0;
 
     mapping(uint => PeerStruct) public peerById;
@@ -40,31 +40,25 @@ contract PeerlessFactory {
         owner = payable(msg.sender);
     }
 
-    function AddPeer(address adr, string memory name) public onlyOwner() {
-        require(!peerRegistered[adr], "Peer already registered");
+    function AddPeer(address _tokenadr, string memory _name) public onlyOwner() {
+        require(!peerRegistered[_tokenadr], "Peer already registered");
 
-        Peer newPeer = new Peer(address(this), name, adr, tradeFee, peerID);
+        Peer newPeer = new Peer(address(this), _name, _tokenadr, tradeFee, peerID);
         PeerStruct memory peer = PeerStruct(
             msg.sender, 
             address(newPeer),
-            adr,
+            _tokenadr,
             peerID, 
             block.timestamp, 
-            name,
+            _name,
             false
             );
 
         peerById[peerID] = peer;
-        peerRegistered[adr] = true;
+        peerRegistered[_tokenadr] = true;
         peerByOwnerAdr[msg.sender] = peer;
         peers.push(peer);
         peerID += 1;
-    }
-
-    function WithdrawFees() external onlyOwner() {
-        for (uint256 i = 0; i < peers.length; i++) {
-            Peer(peers[i].peerAdr).WithdrawFees();
-        }
     }
 
     function GetPeers() external view returns (PeerStruct[] memory) {
@@ -79,18 +73,12 @@ contract PeerlessFactory {
         return peerByOwnerAdr[adr];
     }
 
-    // Used to see which Peers in DropDown. Dropdown set active peer, re-fetch orders.
- 
     function IsPeerFrozen(uint id) external view returns (bool) {
         return peerById[id].frozen;
     }
 
     function SetTradeFee(uint fee) external onlyOwner() {
         tradeFee = fee;
-    }
-
-    function SetAddPeerFee(uint fee) external onlyOwner() {
-        addPeerFee = fee * 1e18;
     }
 
     function SetFrozenPeer(uint id, bool frozen) external onlyOwner() {

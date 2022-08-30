@@ -94,7 +94,7 @@ contract Peer is ReentrancyGuard {
 
         emit BuyTokenOrder(msg.sender, orderId, _evmCurrency, _token);
 
-        orderId++;
+        orderId += 1;
         evmCurrencyFeesCollected += GetCostWithFee(_evmCurrency) - _evmCurrency;
     }
 
@@ -111,29 +111,26 @@ contract Peer is ReentrancyGuard {
 
         emit SellTokenOrder(msg.sender, orderId, _token, _evmCurrency);
 
-        orderId++;
+        orderId += 1;
         tokenFeesCollected += GetCostWithFee(_token) - _token;
     }
 
     // CALL BEFORE POST SELL ORDER
-    function Approve() external {
-        token.approve(address(this), 100000 * 1 ether);
-    }
+    // function Approve() external {
+    //     token.approve(address(this), 100000 * 1 ether);
+    // }
 
-    function FillOrder(uint _orderId) nonReentrant() notFrozen() payable public {
-
-        require(!allOrders[_orderId].filled, "Order filled");
-        require(!allOrders[_orderId].cancelled, "Order cancelled");
-       
-
-        if (allOrders[_orderId].buyToken) {
-
-            // Check Token Balance
+    // AKA Sell tokens for EVM
+    function FillBuyTokenOrder(uint _orderId) nonReentrant() notFrozen() public {
+            console.log("LOG", _orderId);
+            require(!allOrders[_orderId].filled, "Order filled");
+            require(!allOrders[_orderId].cancelled, "Order cancelled");
+        // Check Token Balance
             require(getContractTokenBalance() >= allOrders[_orderId].token, "Insufficient contract Token balance");
 
             // // Deposits Token in contract
-            // Token.transferFrom(msg.sender, address(this), GetCostWithFee(orders[_orderId].token));
-            
+            token.transferFrom(msg.sender, address(this), GetCostWithFee(allOrders[_orderId].token));
+
             // // Check Token before transfer out
             require(token.balanceOf(address(this)) > allOrders[_orderId].token, "Insufficient Token");
             
@@ -142,6 +139,7 @@ contract Peer is ReentrancyGuard {
 
             // Sends Token to Order owner
             token.transfer(allOrders[_orderId].owner, allOrders[_orderId].token);
+
             //orders[_orderId].owner.transfer(orders[_orderId].Token);
             //Token.transferFrom(owner, orders[_orderId].owner ,orders[_orderId].Token);
 
@@ -149,15 +147,16 @@ contract Peer is ReentrancyGuard {
             (bool hs, ) = payable(msg.sender).call{value: allOrders[_orderId].evmCurrency }("");
             require(hs);
 
-            // Fills Order
             allOrders[_orderId].filled = true;
-
             _buyOrdersFilled += 1;
             emit BuyTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
+    }
 
+    // AKA Buy tokens for EVM
+    function FillSellTokenOrder(uint _orderId) nonReentrant() notFrozen() payable public {
+            require(!allOrders[_orderId].filled, "Order filled");
+            require(!allOrders[_orderId].cancelled, "Order cancelled");
 
-        } else {
-             // Check EVMCURRENCY msg.value
             require(msg.value > GetCostWithFee(allOrders[_orderId].evmCurrency), "Insufficient sender EVM");
 
             // Check Token before transfer out
@@ -173,14 +172,9 @@ contract Peer is ReentrancyGuard {
             (bool hs, ) = payable( allOrders[_orderId].owner).call{value: allOrders[_orderId].evmCurrency }("");
             require(hs);
 
-            // Fills Order
-            allOrders[_orderId].filled = true;
-
             _sellOrdersFilled += 1;
-            
+            allOrders[_orderId].filled = true;        
             emit SellTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
-        }
-        //RemoveOrderFromList(_orderId);
     }
 
     function GetCostWithFee(uint amount) public view returns (uint) {
@@ -190,6 +184,8 @@ contract Peer is ReentrancyGuard {
     function WithdrawFees() nonReentrant() onlyOwner() external {
         token.transfer(owner, tokenFeesCollected);
         owner.transfer(evmCurrencyFeesCollected);
+        tokenFeesCollected = 0;
+        evmCurrencyFeesCollected = 0;
     }
 
     function CancelOrder(uint _orderID) external {
