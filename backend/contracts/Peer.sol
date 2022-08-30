@@ -115,10 +115,10 @@ contract Peer is ReentrancyGuard {
         tokenFeesCollected += GetCostWithFee(_token) - _token;
     }
 
-    // CALL BEFORE POST SELL ORDER
-    // function Approve() external {
-    //     token.approve(address(this), 100000 * 1 ether);
-    // }
+    // This contract requires allowance from token
+    function Approve(uint amount) external {
+        token.approve(address(this), amount * 1 ether);
+    }
 
     // AKA Sell tokens for EVM
     function FillBuyTokenOrder(uint _orderId) nonReentrant() notFrozen() public {

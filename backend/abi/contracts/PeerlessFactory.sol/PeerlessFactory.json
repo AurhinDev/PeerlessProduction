@@ -1,0 +1,15 @@
+[
+  "constructor()",
+  "function AddPeer(address,string)",
+  "function GetPeerByID(uint256) view returns (tuple(address,address,address,uint256,uint256,string,bool))",
+  "function GetPeerByOwner(address) view returns (tuple(address,address,address,uint256,uint256,string,bool))",
+  "function GetPeers() view returns (tuple(address,address,address,uint256,uint256,string,bool)[])",
+  "function IsPeerFrozen(uint256) view returns (bool)",
+  "function SetFrozenPeer(uint256,bool)",
+  "function SetTradeFee(uint256)",
+  "function peerById(uint256) view returns (address, address, address, uint256, uint256, string, bool)",
+  "function peerByOwnerAdr(address) view returns (address, address, address, uint256, uint256, string, bool)",
+  "function peerID() view returns (uint256)",
+  "function peerRegistered(address) view returns (bool)",
+  "function tradeFee() view returns (uint256)"
+]

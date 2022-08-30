@@ -4,7 +4,11 @@
   "description": "Code Jam submission for Doin Gud",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node": "npx hardhat node",
+    "deploc": "npx hardhat run --network localhost scripts/deploy.js",
+    "depmum": "npx hardhat run --network mumbai scripts/deploy-mumbai.js",
+    "depmain": "npx hardhat run --network mainnet scripts/deploy-mainnet.js"
   },
   "author": "Jacob Eriksson",
   "license": "ISC",
@@ -18,6 +22,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "hardhat-abi-exporter": "^2.10.0"
   }
 }

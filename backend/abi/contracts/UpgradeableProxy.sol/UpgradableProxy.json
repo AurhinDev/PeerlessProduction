@@ -1,0 +1,7 @@
+[
+  "constructor()",
+  "function implementation() view returns (address)",
+  "function proxyOwner() view returns (address)",
+  "function transferProxyOwnership(address)",
+  "function upgradeTo(address)"
+]
