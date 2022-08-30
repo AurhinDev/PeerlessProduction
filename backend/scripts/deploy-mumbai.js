@@ -12,7 +12,7 @@ async function main() {
     [owner, operator] = await ethers.getSigners();
     // Deploy Erc20
     const inkAdr  = "0x7b12Aa06509141AADeabB6CA200ce01a0F0b2B3E"
-    const testgameAdr = ""
+    const factoryAdr = "0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358"
 
     // const Ink = await ethers.getContractFactory("INKCoin");
     // ink = await Ink.deploy();
@@ -20,14 +20,14 @@ async function main() {
 
     // console.log("ink", ink.address);
 
-    const Factory = await ethers.getContractFactory("PeerlessFactory");
-    factory = await Factory.deploy();
-    await factory.deployed();
+    // const Factory = await ethers.getContractFactory("PeerlessFactory");
+    // factory = await Factory.deploy();
+    // await factory.deployed();
 
-    console.log("factory", factory.address);
+    // console.log("factory", factory.address);
 
-    await factory.AddPeer(inkAdr, "INK");
-    
+    // await factory.AddPeer(inkAdr, "INK");
+
     // const TokenSale = await ethers.getContractFactory("TokenSale");
     // tokensale = await TokenSale.deploy(dev);
     // await tokensale.deployed();

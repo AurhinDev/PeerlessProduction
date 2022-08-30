@@ -1,8 +1,10 @@
-require("@nomiclabs/hardhat-waffle");
 require("dotenv").config();
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-waffle");
 require('hardhat-abi-exporter');
 
-const { PRIVATE_KEY_MAIN, PRIVATE_KEY_SECOND, RPC_URL } = process.env;
+const { PRIVATE_KEY_MAIN, PRIVATE_KEY_SECOND, RPC_URL, POLYGONSCAN_API_KEY } = process.env;
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -41,7 +43,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     // }
   },
   etherscan: {
-    apiKey: [process.env.EHTERSCAN_API_KEY]
+    apiKey: POLYGONSCAN_API_KEY
   },
   abiExporter: {
     path: './abi',
