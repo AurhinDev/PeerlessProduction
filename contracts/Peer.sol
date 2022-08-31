@@ -35,7 +35,7 @@ contract Peer is ReentrancyGuard {
     uint public tokenFeesCollected = 0;
     uint public evmCurrencyFeesCollected = 0;
     uint id;
-    uint fee;
+    uint fee = 102;
 
     modifier notFrozen() {
         require(!factory.IsPeerFrozen(id), "Peer is frozen");
@@ -177,7 +177,7 @@ contract Peer is ReentrancyGuard {
     }
 
     function GetCostWithFee(uint amount) public view returns (uint) {
-        return amount * (100 + fee) / 100;
+        return (amount * fee) / 100;
     }
 
     function WithdrawFees() nonReentrant() onlyOwner() external {

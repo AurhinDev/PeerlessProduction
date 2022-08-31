@@ -3,6 +3,7 @@ require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-waffle");
 require('hardhat-abi-exporter');
+require("hardhat-gas-reporter");
 
 const { PRIVATE_KEY_MAIN, PRIVATE_KEY_SECOND, RPC_URL, POLYGONSCAN_API_KEY } = process.env;
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -25,7 +26,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      gas: 2600000    
+      gas: 30000000    
     },
     // rinkeby: {
     //   url: "https://eth-rinkeby.alchemyapi.io/v2/CZurhojJKjHztWuvPlc4coBqQM_9KZUI",
@@ -51,6 +52,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     clear: true,
     spacing: 2,
     format: "minimal",
+  },
+  gasReporter: {
+    enabled: true
   },
   solidity: {
     version: "0.8.4",

@@ -44,6 +44,8 @@ contract PeerlessFactory {
         require(!peerRegistered[_tokenadr], "Peer already registered");
 
         Peer newPeer = new Peer(address(this), _name, _tokenadr, tradeFee, peerID);
+        //Peer newPeer = new Peer(_name, _tokenadr);
+
         PeerStruct memory peer = PeerStruct(
             msg.sender, 
             address(newPeer),
