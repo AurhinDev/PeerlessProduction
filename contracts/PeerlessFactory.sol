@@ -61,10 +61,6 @@ contract PeerlessFactory {
         peerID += 1;
     }
 
-    function GetPeers() external view returns (PeerStruct[] memory) {
-        return peers;
-    }
-
     function GetPeerByID(uint id) external view returns (PeerStruct memory) {
         return peerById[id];
     }

@@ -46,7 +46,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     apiKey: POLYGONSCAN_API_KEY
   },
   abiExporter: {
-    path: './abi',
+    path: './src/abi',
     runOnCompile: true,
     clear: true,
     spacing: 2,

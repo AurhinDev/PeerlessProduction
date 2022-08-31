@@ -32,8 +32,6 @@ describe.only("Tests", function () {
     factory = await Factory.deploy();
     await factory.deployed();
 
-    let peers = await factory.GetPeers();
-    console.log("Peers", peers);
 
     await factory.AddPeer(ink.address, "INK");
     

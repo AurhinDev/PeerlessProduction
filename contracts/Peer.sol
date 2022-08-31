@@ -122,7 +122,6 @@ contract Peer is ReentrancyGuard {
 
     // AKA Sell tokens for EVM
     function FillBuyTokenOrder(uint _orderId) nonReentrant() notFrozen() public {
-            console.log("LOG", _orderId);
             require(!allOrders[_orderId].filled, "Order filled");
             require(!allOrders[_orderId].cancelled, "Order cancelled");
         // Check Token Balance
