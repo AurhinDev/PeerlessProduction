@@ -96,7 +96,7 @@ function TabelContainer(props) {
   const [allOrders, setAllOrders] = useState(orders);
   const [currentSort, setCurrentSort] = useState("index");
   const [sortInvert, setSortInvert] = useState(false);
-  
+
   allOrders.forEach((item, index) => {
     item["id"] = index;
   });
@@ -152,13 +152,16 @@ function TabelContainer(props) {
 
   function handelModal(e) {
     setConfirmOrder(true);
+    setSelectedOrder(e.target.getAttribute("data-id"));
+    /* 
     if (e.target.innerText == "SELL" || e.target.innerText == "BUY") {
-      setSelectedOrder(e.target.parentElement.parentElement.rowIndex);
+      setSelectedOrder(e.target.parentElement.getAttribute("data-id"));
       console.dir(e.target.parentElement.parentElement.rowIndex);
     } else {
-      setSelectedOrder(e.target.parentElement.rowIndex);
-      console.dir(e.target.parentElement.rowIndex);
+      setSelectedOrder(e.target.getAttribute("data-id"));
+      console.dir(e.target);
     }
+    console.dir(e.target); */
   }
 
   function handleSortId(e) {
@@ -235,61 +238,63 @@ function TabelContainer(props) {
             </tr>
           </thead>
           <tbody>
-            {[...allOrders]
-              .sort(sortTypes[currentSort].fn)
-              .map((item) => {
-                if (!item.cancelled & !item.filled) {
-                  const tabelindex = item.id + 1;
-                  const buy = item.buyToken;
-                  const token = item.token.value;
-                  const evmCurrency = item.evmCurrency.value;
-                  const date = item.datecreated.value;
+            {[...allOrders].sort(sortTypes[currentSort].fn).map((item) => {
+              if (!item.cancelled & !item.filled) {
+                const tabelindex = item.id + 1;
+                const buy = item.buyToken;
+                const token = item.token.value;
+                const evmCurrency = item.evmCurrency.value;
+                const date = item.datecreated.value;
 
-                  return (
-                    <tr
-                      onClick={handelModal}
-                      className="TabelContainer-row"
-                      key={tabelindex}
-                      value={tabelindex}
-                    >
-                      <td index={tabelindex}>{tabelindex}</td>
-                      {buy ? (
-                        <td className="TabelContainer-row-type">
-                          <span
-                            className="TabelContainer-buyAndSell"
-                            style={{
-                              backgroundColor: "var(--backgroundGreen)",
-                            }}
-                          >
-                            {" "}
-                            BUY
-                          </span>
-                        </td>
-                      ) : (
-                        <td className="TabelContainer-row-type">
-                          <span
-                            className="TabelContainer-buyAndSell"
-                            style={{ backgroundColor: "var(--backgroundRed)" }}
-                          >
-                            {" "}
-                            SELL
-                          </span>
-                        </td>
-                      )}
-                      <td>{token}</td>
-                      <td>{evmCurrency}</td>
-                      <td>{date}</td>
-                      {!allTabel ? (
-                        <td>
-                          <button className="button-5 TabelContainer-cancel">
-                            Cancel
-                          </button>
-                        </td>
-                      ) : null}
-                    </tr>
-                  );
-                }
-              })}
+                return (
+                  <tr
+                    onClick={handelModal}
+                    className="TabelContainer-row"
+                    key={item.id}
+                    value={item.id}
+                  >
+                    <td data-id={item.id} index={tabelindex}>
+                      {tabelindex}
+                    </td>
+                    {buy ? (
+                      <td data-id={item.id} className="TabelContainer-row-type">
+                        <span
+                          data-id={item.id}
+                          className="TabelContainer-buyAndSell"
+                          style={{
+                            backgroundColor: "var(--backgroundGreen)",
+                          }}
+                        >
+                          {" "}
+                          BUY
+                        </span>
+                      </td>
+                    ) : (
+                      <td data-id={item.id} className="TabelContainer-row-type">
+                        <span
+                          data-id={item.id}
+                          className="TabelContainer-buyAndSell"
+                          style={{ backgroundColor: "var(--backgroundRed)" }}
+                        >
+                          {" "}
+                          SELL
+                        </span>
+                      </td>
+                    )}
+                    <td data-id={item.id}>{token}</td>
+                    <td data-id={item.id}>{evmCurrency}</td>
+                    <td data-id={item.id}>{date}</td>
+                    {!allTabel ? (
+                      <td data-id={item.id}>
+                        <button className="button-5 TabelContainer-cancel">
+                          Cancel
+                        </button>
+                      </td>
+                    ) : null}
+                  </tr>
+                );
+              }
+            })}
           </tbody>
         </table>
       </div>
