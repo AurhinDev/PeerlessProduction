@@ -10,7 +10,7 @@ function Layout(props) {
     setConnect(true);
   }
   return (
-    <div className="layout-container noMarginNoPadding">
+    <div className="layout-container ">
       <TopBar />
 
       {connect ? (

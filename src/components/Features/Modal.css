@@ -1,0 +1,39 @@
+.Modal-backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.modal{
+  width: 18rem;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondWhite);
+  color: var(--mainBlack);
+  border-radius: 00.2rem;
+  
+}
+
+.button-5-confirm{
+  background-color: var(--highlight1);
+  color: white;
+}
+
+.button-5-cancel{
+  background-color: var(--mainColor2);
+  color: white;
+}
+.modal-buttons{
+  display: flex;
+  gap: 1rem;padding: 1rem;
+}

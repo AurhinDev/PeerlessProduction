@@ -1,52 +1,35 @@
-.MainContainer-container{
-
-  width: calc(100%-2rem);
-  height: 88vh;
+.MainContainer-container {
   
-  overflow: hidden;
-  padding: 4vh;
-  padding-top: 8vh;
+  padding: 2rem;
+  margin-top: 6rem;
   display: flex;
-  gap: 4vh;
+  flex-direction: row;
+  gap: 2rem;
  
+  
 }
 
-.MainContainer-side{
-  width: 40%;
-  height: 88vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 4vh;
- 
-
- 
-
-
-}
-.connectButton{
-  background-color: var(--mainColor2);
+.connectButton {
+  background-color: var( --highlight1);
   padding: 1rem 2rem;
   font-size: 1.4rem;
   margin: 2rem;
 }
 
-.connectButton:hover{
-  background-color: var(--mainColor3);
+.connectButton:hover {
+  background-color: var( --highlight1);
 }
-.connectText{
+.connectText {
   display: flex;
   flex-direction: column;
 }
-.connectText h2{
-font-size: 6rem;
+.connectText h2 {
+  font-size: 6rem;
 }
-.connectText h3{
+.connectText h3 {
   font-size: 2rem;
-
-  }
-  .connectText p{
-    font-size: 1rem;
-    margin: 0;
-  
-    }
+}
+.connectText p {
+  font-size: 1rem;
+  margin: 0;
+}

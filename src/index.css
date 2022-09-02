@@ -4,22 +4,11 @@ body,
 .App {
   margin: 0%;
   padding: 0;
-  color: white;
+  color: var(--mainBlack);
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-
-  /*   background: rgb(214,85,10);
-background: linear-gradient(11deg, rgba(214,85,10,1) 0%, rgba(108,50,20,1) 20%, rgba(0,16,45,1) 50%, rgba(0,0,0,1) 74%);
-   */
-  background: var(--mainColor3);
-  background: linear-gradient(
-    11deg,
-    var(--mainColor3) 0%,
-    var(--mainColor2) 20%,
-    rgba(0, 16, 45, 1) 50%,
-    rgba(0, 0, 0, 1) 74%
-  );
+  overflow-x: hidden;
+  background-color: rgb(240, 239, 233);
 
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
@@ -39,19 +28,18 @@ background: linear-gradient(11deg, rgba(214,85,10,1) 0%, rgba(108,50,20,1) 20%, 
 }
 
 :root {
-  --mainColor1: #042c71;
-  --mainColor2: #084387;
-  --mainColor3: #0b6ab0;
-  --mainColor4: #00102d;
-  --secondColor1: #ce4912;
-  --secondColor2: #f36b1c;
-  --muteColor1: rgb(0, 0, 0);
-  --muteColor2: #2b2b2b;
-  --muteColor3: #3b3b3b;
-  --muteColor4: #202020;
-  --grayColor1: rgb(113, 113, 113);
-  --grayColor2: rgb(177, 177, 177);
+  --mainBlack: #37352f;
+  --mainWhite:  #fff;
+  --secondWhite:  #ececec;
+  --backgroundGreen: #bfe9bf ;
+  --backgroundRed: #eecfc9;
+  --highlight1: #EF8354;
+  --mainColor: #4F5D75;
+  --mainColorLight: #627493;
+  --mainColor2: #768bae;
+  --mainColor3: #BFC0C0;
 }
+
 h1,
 h2,
 h3,
@@ -81,19 +69,18 @@ h2 {
   letter-spacing: 0.2rem;
 }
 .standardShadow {
-  box-shadow: #000000 5px 5px 20px;
+  box-shadow: #00000059 5px 5px 20px;
 }
 
 /* CSS */
 .button-5 {
   align-items: center;
   background-clip: padding-box;
-
   border: 1px solid transparent;
   border-radius: 0.2rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--mainBlack);
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
@@ -103,7 +90,6 @@ h2 {
   justify-content: center;
   line-height: 1.25;
   margin: 0;
-
   padding: 0.2rem 1rem;
   position: relative;
   text-decoration: none;
@@ -135,17 +121,17 @@ h2 {
   border: 1px solid #222222;
   border-radius: 0.2rem;
   box-sizing: border-box;
-  color: #222222;
+  color: var(--mainBlack);
   cursor: pointer;
   display: inline-block;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-  font-size: 24px;
-  font-weight: 600;
+  
+  font-weight: 300;
   line-height: 20px;
   margin: 0;
   outline: none;
-  padding: 10px 10px;
+  padding: 8px 8px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -163,14 +149,14 @@ h2 {
 }
 
 .button-23:active {
-  background-color: #f7f7f7;
+ 
   border-color: #000000;
   transform: scale(0.96);
 }
 
 .button-23:disabled {
   border-color: #dddddd;
-  color: #dddddd;
+  color: var(--mainBlack);
   cursor: not-allowed;
   opacity: 1;
 }
@@ -183,13 +169,14 @@ h2 {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--grayColor1);
-  border-radius: 0.2rem;
+  background: grey;
+
+ 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--grayColor2);
+  background: rgb(177, 177, 177);
   border-radius: 0.2rem;
 }
 
@@ -198,14 +185,27 @@ h2 {
   background: rgb(177, 177, 177);
   border-radius: 0.2rem;
 }
-.header-info {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 1rem;
-}
+
 
 .TabelContainer-row-type{
   font-weight: 500;
   font-size: 1.1rem;
+}
+.header-info-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 1rem;
+  
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

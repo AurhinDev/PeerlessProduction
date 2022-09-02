@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Slider from "../../Features/Slider";
 import "./BuyAndSellContainer.css";
 function BuyAndSellContainer(props) {
   const [buy, setBuy] = useState(true);
-
+  /* const [sliderState, setsliderState] = useState(0); */
   function handleBuyAndSell(e) {
     if (e.target.value == "buy") {
       setBuy(true);
@@ -15,7 +16,9 @@ function BuyAndSellContainer(props) {
       console.dir("Error: " + e.target.value);
     }
   }
-
+  useEffect(()=>{
+    console.dir(buy)
+  }, [buy])
   function handleSubmit(e) {
     console.dir("hej");
   }
@@ -23,39 +26,21 @@ function BuyAndSellContainer(props) {
     <div className=" centerInDiv BuyAndSellContainer-container  ">
       <div className="BuyAndSellContainer-HeaderAndButtons">
         {buy ? (
-          <div className="header-info">
+          <div className="header-info-title">
             <h2> BUY</h2>
             <h5>Make buy order</h5>
           </div>
         ) : (
-          <div className="header-info">
+          <div className="header-info-title">
             <h2> SELL</h2>
             <h5>Make sell order</h5>
           </div>
         )}
-        <div className="BuyAndSellContainer-form-buttons">
-          <h5 className="header-info">Toggle Action</h5>
-          <button
-            type="button"
-            onClick={handleBuyAndSell}
-            value="buy"
-            className="BuyButton button-5"
-          >
-            Buy
-          </button>
-
-          <button
-            type="button"
-            onClick={handleBuyAndSell}
-            value="sell"
-            className="SellButton button-5"
-          >
-            Sell
-          </button>
-        </div>
+     
+        <Slider width={"20%"} value1={"Buy"} value2={"Sell"} background1={"var(--backgroundGreen)"} background2={"var(--backgroundRed)"} state={setBuy}/>
       </div>
       <form
-        className="BuyAndSellContainer-form standardShadow"
+        className="BuyAndSellContainer-form " //standardShadow
         
       >
         <div className="BuyAndSellContainer-form-input">

@@ -13,13 +13,10 @@ function App() {
   const [currency, setCurrency] = useState(null);
 
   const factory_abi = factoryABI;
-  console.log("Factory", factory_abi);
   const peer_abi = peerABI;
-  console.log("Peer", peer_abi);
   const token_abi = tokenABI;
-  console.log("Token", token_abi);
 
-  const connect = async () => {
+  /* const connect = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
     await provider.send("eth_requestAccounts", []);
@@ -36,7 +33,7 @@ function App() {
 
     //https://ethereum.stackexchange.com/questions/120817/how-to-call-a-contract-function-method-using-ethersjs
 };
-
+ */
 
 
   return (
@@ -44,7 +41,7 @@ function App() {
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
       
       <div className="App">
-      <button onClick={connect()}> Click </button>
+      {/* <button onClick={connect()}> Click </button> */}
         <Layout />
       </div>
 

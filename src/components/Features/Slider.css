@@ -1,0 +1,51 @@
+.Slider-container{
+
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+ 
+  
+
+}
+.Slider-bar{
+
+  width: 100%;
+  background-color: var(--secondWhite);
+  height: 2rem;
+  color: var(--mainBlack);
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border: var(--mainBlack) 1px solid;
+  border-radius: 0.2rem;
+ 
+
+}
+
+.Slider-bar-item{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+}
+.Slider-selector {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  margin-top: -1px;
+  margin-left: -1px;
+  color: var(--mainBlack);
+  background: var(--backgroundGreen);
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--mainBlack) 1px solid;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
