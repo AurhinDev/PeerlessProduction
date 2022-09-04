@@ -28,10 +28,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     hardhat: {
       gas: 30000000    
     },
-    // rinkeby: {
-    //   url: "https://eth-rinkeby.alchemyapi.io/v2/CZurhojJKjHztWuvPlc4coBqQM_9KZUI",
-    //   accounts: [process.env.PRIVATE_KEY_MAIN, process.env.PRIVATE_KEY_SECOND]
-    // },
+    rinkeby: {
+      url: "https://eth-rinkeby.alchemyapi.io/v2/CZurhojJKjHztWuvPlc4coBqQM_9KZUI",
+      accounts: [process.env.PRIVATE_KEY_MAIN, process.env.PRIVATE_KEY_SECOND]
+    },
     mumbai: {
       url: RPC_URL,
       accounts: [PRIVATE_KEY_MAIN, PRIVATE_KEY_SECOND],

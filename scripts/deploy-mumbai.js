@@ -38,10 +38,10 @@ async function main() {
     // console.log("tokensale", tokensale.address);
     // //await tokensale.setFrxstContract(frxstAdr);
 
-    //  await hre.run("verify", {
-    //    address: "0xdbc1a2506e7a5c08dd0e5a6d5c823ff84cbf480e",
-    //     constructorArgs: "C:/Users/brick/Desktop/PeerlessProduction/backend/scripts/args.js"
-    //  });
+     await hre.run("verify", {
+       address: "0x967F874FA8ccDd3E87070aF72ccc1aD946E833db",
+        constructorArgs: "C:/Users/brick/Desktop/PeerlessProduction/scripts/args.js"
+     });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
