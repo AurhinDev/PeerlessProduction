@@ -13,8 +13,12 @@ function TopBar(props) {
     console.log("Account:", await signer.getAddress());
 }; */
 
-
-  const coolStats = ["This is Cool", "Yeah Boy", "Cool Stats Comming", "hej kompis"];
+  const coolStats = [
+    "This is Cool",
+    "Yeah Boy",
+    "Cool Stats Comming",
+    "hej kompis",
+  ];
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -24,32 +28,35 @@ function TopBar(props) {
       } else {
         setCount(0);
       }
-    }, 10000);
+    }, 3000);
     return () => {
       clearInterval(interval);
     };
   });
 
-  useEffect(() => {
-    
-  }, [count]);
+  useEffect(() => {}, [count]);
 
   return (
-    <div className="TopBar-container">
-      <h1><span className="title-part1">Peerless</span><span className="title-part2">Production</span></h1>
-      <div className="TopBar-stats">
-        <motion.h4
-          animate={{ opacity: [0, 1, 1, 1, 0], y: [-50, 1, 1, 1, -50] }}
-          transition={{ repeat: Infinity, duration: 10 }}
-        >
-          {coolStats[count]}
-        </motion.h4>
+   
+      <div className="TopBar-container">
+        <h1>
+          <span className="title-part1">Peerless</span>
+          <br />
+          <span className="title-part2">Production</span>
+        </h1>
+        <div className="TopBar-stats">
+          <motion.h4
+            animate={{ opacity: [0, 1, 1, 1, 0], y: [-50, 1, 1, 1, -50] }}
+            transition={{ repeat: Infinity, duration: 3 }}
+          >
+            {coolStats[count]}
+          </motion.h4>
+        </div>
+        <div className="TopBar-dropdowns">
+          <Dropdowns />
+        </div>
       </div>
-      <div className="TopBar-dropdowns">
-        <Dropdowns />
-       {/*  <CurrencyDropdown /> */}
-      </div>
-    </div>
+   
   );
 }
 

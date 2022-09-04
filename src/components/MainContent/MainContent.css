@@ -1,14 +1,26 @@
 .MainContainer-container {
   
   padding: 2rem;
-  margin-top: 6rem;
+  overflow-x: hidden;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   gap: 2rem;
- 
+  height: auto;
+  margin-top: 7rem;
   
 }
-
+.MainContainer-sidebar{
+  position: fixed;
+  left: 0;
+  top: 6rem;
+  padding: 3rem 2rem;
+  width: 30%;
+  height: 100%;
+  background-color: var(--thirdWhite);
+  border-right: 1px solid var(--mainBlack);
+  
+}
 .connectButton {
   background-color: var( --highlight1);
   padding: 1rem 2rem;

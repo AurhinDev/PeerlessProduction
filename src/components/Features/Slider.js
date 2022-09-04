@@ -11,7 +11,7 @@ function Slider(props) {
  
   return (
     <div className='Slider-container noselect' style={{width: props.width}}>
-      <div className='Slider-bar'>
+      <div className='Slider-bar '>
         <div onClick={() =>{ props.state(true); setPosition(0); setSelectorLeftPos("0%"); setSelectorColor(background1)}} className='Slider-bar-item'><span>{value1}</span></div>
         <div onClick={() =>{props.state(false); setPosition(1); setSelectorLeftPos("50%"); setSelectorColor(background2)}} className='Slider-bar-item'><span>{value2}</span></div>
         <div className='Slider-selector' style={{left: selectorLeftPos, background:selectorColor}}>

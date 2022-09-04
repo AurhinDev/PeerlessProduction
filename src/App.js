@@ -3,14 +3,15 @@ import { ethers } from "ethers";
 import factoryABI from "./abi/contracts/PeerlessFactory.sol/PeerlessFactory.json";
 import peerABI from "./abi/contracts/Peer.sol/Peer.json";
 import tokenABI from "./abi/contracts/InkCoin.sol/INKCoin.json";
-
+import { exportedPairings } from "./helper/Pairings";
 
 import Layout from "./components/Layout";
 import { NetworkContext, CurrencyContext } from "./helper/Context";
 
 function App() {
+  let pairings =exportedPairings;
   const [network, setNetwork] = useState("Ethereum");
-  const [currency, setCurrency] = useState(null);
+  const [currency, setCurrency] = useState(pairings[network][0]);
 
   const factory_abi = factoryABI;
   const peer_abi = peerABI;

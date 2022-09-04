@@ -1,12 +1,11 @@
 .TabelContainer-container {
-  width: 70%;
+  width: calc(67.3% - 2rem);
   height: calc(100%-2rem);
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
-  z-index: 1;
   
 
  
@@ -26,10 +25,7 @@
 }
 
 .TabelContainer-scrollable {
- /*  width: 100%;
- 
-  overflow-y: scroll;
-  background-color: var(--mainColor); */
+
   border-radius: 0.4rem;
   width: 100%;
   height: 100%;
@@ -68,8 +64,9 @@
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
  
   font-size: 1.1rem;
-  z-index: 3;
+ 
   color: var(--mainWhite);
+  position: sticky;
   
 }
 .TabelContainer-first-row th{

@@ -3,9 +3,11 @@
   flex-direction: column;
   gap: 0.5rem;
   z-index: 1;
-  width: 30%;
-  position: sticky;
-  top: 8rem;
+  width: 100%;
+ 
+  
+  
+
 }
 
 .BuyAndSellContainer-HeaderAndButtons {
@@ -37,7 +39,7 @@ background-color: var(--mainWhite);
   padding: 2% 10%;
   flex-direction: column;
   justify-content: center;
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
 }
 
 .BuyAndSellContainer-form-input {
@@ -46,23 +48,37 @@ background-color: var(--mainWhite);
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1vh;
+  position: relative;
 }
 .BuyAndSellContainer-form-input label {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
-  letter-spacing: 0.2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+ 
 }
 .BuyAndSellContainer-form-input input {
   display: flex;
   flex-direction: row;
-  border-radius: 0.4rem;
+  
   padding: 0.2rem;
   width: 80%;
+  border: none;
+  border-bottom: 1px solid var(--mainBlack);
+  margin-bottom: 2rem;
+  outline: none;
+}
+.BuyAndSellContainer-form-input input:focus{
+  outline: none;
 }
 .BuyAndSellContainer-form-submitButton {
   width: auto;
   font-size: 1.1rem;
   margin: auto;
   margin-top: 1rem;
+}
+.BuyAndSellContainer-form-input input:focus ~ .BuyAndSellContainer-form-input label {
+  top: -20px;
 }

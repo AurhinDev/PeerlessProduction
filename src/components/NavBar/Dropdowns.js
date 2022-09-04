@@ -1,181 +1,132 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NetworkContext, CurrencyContext } from "../../helper/Context";
 import "./Dropdown.css";
-
+import { exportedPairings } from "../../helper/Pairings";
+import ArrowButton from "../Features/ArrowButton";
 function Dropdowns(props) {
+  let pairings = exportedPairings;
+
   const { network, setNetwork } = useContext(NetworkContext);
   const { currency, setCurrency } = useContext(CurrencyContext);
 
-  let pairings = {
-    Ethereum: [
-      // <- Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "INK123",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F82" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "INK123" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "INK456",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F21" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "INK456" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-    ],
-    Polygon: [
-      // <- Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "PINC123",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8058efe0198ae9dD7D563e1b4938Dcbc83A1F81" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "PINC123" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "PINC456",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8058efe0198ae9dD7D563e1b4928Dcbc86A1F81" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "PINC456" },
-        { frozen: false },
-      ],
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "PINC789",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8058efe0198ae9dD7D563e3b4938Dcbc86A1F81" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "PINC789" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "PINC901",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd3058efe0198ae9dD7D563e1b4938D32cbc86A1F81" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "PINC901" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-    ],
-    Avalanche: [
-      // <- Network
-      [
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
-        "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-        { value: "0" },
-        { value: "1661688283" },
-        "LINK123",
-        false,
-        { owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-        { peerAdr: "0xd8053efe0198ae9dD7D563e1b4938Dcbc86A1F81" },
-        { tokenAdr: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" },
-        { peerID: { value: "0" } },
-        { dateCreated: { value: "1661688283" } },
-        { name: "LINK123" },
-        { frozen: false },
-      ], // <- Token Adress on Network
-    ],
-  };
-
-  const entries = Object.entries(pairings);
-  const networkList = entries.map((item) => (
-    <option value={item[0]} key={item[0]}>
-      {item[0]}
-    </option>
-  ));
-
-  const currencyList = pairings[network].map((item) => {
-    const peerAdr = item[8].peerAdr;
-    const name = item[12].name;
-
-    return (
-      <option key={peerAdr} value={name}>
-        {name + " - " + peerAdr}
-      </option>
-    );
-  });
+  const [networkOpen, setNetworkOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
 
   useEffect(() => {
-    setCurrency(pairings[network][0][12].name);
+    setCurrency(pairings[network][0]);
   }, [network]);
 
-  function handleNetworkChange(e) {
-    setNetwork(e.target.value);
+  function handleNetworkDropdown(e) {
+    setNetworkOpen((prevState) => !prevState);
   }
 
-  function handleCurrencyChange(e) {
-    setCurrency(e.target.value);
+  function handleCurrencyDropdown(e) {
+    setCurrencyOpen((prevState) => !prevState);
+  }
+
+  function handleNetworkSelect(e) {
+    setNetwork(e.target.innerHTML);
+    setNetworkOpen(false);
+    setCurrencyOpen(true);
+  }
+  function handleCurrencySelect(e) {
+    const name = e.target.getAttribute("data-name");
+    const clickedCurrency = pairings[network].filter(
+      (item) => item[12].name == name
+    );
+
+    setCurrency(clickedCurrency[0]);
+    setCurrencyOpen(false);
   }
 
   return (
     <>
-      <div className="dropDown-container">
-        <h3>Network</h3>
-        <div className="select-dropdown">
-          <select className="dropdown" onChange={(e) => handleNetworkChange(e)}>
-            {networkList}
-          </select>
+      <div className="dropDown-container standardShadow">
+        <div className="dropDown-network">
+          <div
+            className="dropDown-network-text"
+            onClick={handleNetworkDropdown}
+          >
+            <h3>Network</h3>
+            <ArrowButton upOrDown={networkOpen ? "down" : ""} />
+          </div>
+          <div className="select-dropdown">
+            <ul className="dropdown">
+              {networkOpen ? (
+                Object.entries(pairings).map((item) => (
+                  <li
+                    value={item[0]}
+                    key={item[0]}
+                    onClick={handleNetworkSelect}
+                    className={item[0] == network ? "dropdown-active" : ""}
+                  >
+                    {item[0]}
+                  </li>
+                ))
+              ) : (
+                <li
+                  value={network}
+                  key={network}
+                  onClick={handleNetworkSelect}
+                  className="dropdown-active"
+                >
+                  {network}
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="dropDown-container">
-        <h3>Currency</h3>
-        <div className="select-dropdown">
-          <select onChange={(e) => handleCurrencyChange(e)}>
-            {currencyList}
-          </select>
+
+      <div className="dropDown-container standardShadow">
+        <div className="dropDown-currency">
+          <div
+            className="dropDown-network-text"
+            onClick={handleCurrencyDropdown}
+          >
+            <h3>Currency</h3>
+            <ArrowButton upOrDown={currencyOpen ? "down" : ""} />
+          </div>
+          <div className="select-dropdown">
+            <ul className="dropdown">
+              {" "}
+              {currencyOpen ? (
+                pairings[network].map((item) => {
+                  const peerAdr = item[8].peerAdr;
+                  const name = item[12].name;
+                  if (name == currency[12].name) {
+                    console.dir("yeaoy");
+                  }
+
+                  return (
+                    <li
+                      key={peerAdr}
+                      value={name}
+                      data-peeradr={peerAdr}
+                      data-name={name}
+                      onClick={handleCurrencySelect}
+                      className={
+                        name == currency[12].name ? "dropdown-active" : ""
+                      }
+                    >
+                      {name + " - " + peerAdr}
+                    </li>
+                  );
+                })
+              ) : (
+                <li
+                  key={currency[8].peerAdr}
+                  value={currency[12].name}
+                  data-peeradr={currency[8].peerAdr}
+                  data-name={currency[12].name}
+                  onClick={handleCurrencySelect}
+                  className="dropdown-active"
+                >
+                  {currency[12].name + " - " + currency[8].peerAdr}
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     </>

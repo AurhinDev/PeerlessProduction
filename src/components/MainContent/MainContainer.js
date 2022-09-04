@@ -8,7 +8,9 @@ function MainContainer(props) {
 
   return (
     <div className="MainContainer-container">
-      <BuyAndSellContainer />
+      <div className="MainContainer-sidebar standardShadow">
+        <BuyAndSellContainer />
+      </div>
 
       <TabelContainer />
     </div>

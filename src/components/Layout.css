@@ -1,7 +1,9 @@
 .layout-container{
-
-height: 100vh;
+position: relative;
+height: 100%;
 width: 100vw;
+
+
 }
 .connectButton{
   background-color: var(--highlight1);

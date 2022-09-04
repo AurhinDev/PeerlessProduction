@@ -23,7 +23,7 @@ function BuyAndSellContainer(props) {
     console.dir("hej");
   }
   return (
-    <div className=" centerInDiv BuyAndSellContainer-container  ">
+    <div className=" centerInDiv BuyAndSellContainer-container   ">
       <div className="BuyAndSellContainer-HeaderAndButtons">
         {buy ? (
           <div className="header-info-title">
@@ -40,7 +40,7 @@ function BuyAndSellContainer(props) {
         <Slider width={"20%"} value1={"Buy"} value2={"Sell"} background1={"var(--backgroundGreen)"} background2={"var(--backgroundRed)"} state={setBuy}/>
       </div>
       <form
-        className="BuyAndSellContainer-form " //standardShadow
+        className="BuyAndSellContainer-form standardShadow " //standardShadow
         
       >
         <div className="BuyAndSellContainer-form-input">

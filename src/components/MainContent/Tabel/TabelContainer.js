@@ -85,7 +85,151 @@ function TabelContainer(props) {
       token: { value: "123" },
       buyToken: true,
       datecreated: { value: "1232" },
-    },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    ,
+    {
+      owner: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      filled: false,
+      cancelled: false,
+      evmCurrency: { value: "123" },
+      token: { value: "123" },
+      buyToken: true,
+      datecreated: { value: "1232" },
+    }
+    
+    
+    
   ];
   const { network, setNetwork } = useContext(NetworkContext);
   const { currency, setCurrency } = useContext(CurrencyContext);
@@ -104,7 +248,7 @@ function TabelContainer(props) {
   const sortTypes = {
     index: {
       class: "index",
-      fn: (a, b) => a.index - b.index,
+      fn: (a, b) => a.id - b.id,
     },
     type: {
       class: "type",
@@ -124,7 +268,7 @@ function TabelContainer(props) {
     },
     indexInverted: {
       class: "index",
-      fn: (a, b) => b.index - a.index,
+      fn: (a, b) => b.id - a.id,
     },
     typeInverted: {
       class: "type",
@@ -153,15 +297,7 @@ function TabelContainer(props) {
   function handelModal(e) {
     setConfirmOrder(true);
     setSelectedOrder(e.target.getAttribute("data-id"));
-    /* 
-    if (e.target.innerText == "SELL" || e.target.innerText == "BUY") {
-      setSelectedOrder(e.target.parentElement.getAttribute("data-id"));
-      console.dir(e.target.parentElement.parentElement.rowIndex);
-    } else {
-      setSelectedOrder(e.target.getAttribute("data-id"));
-      console.dir(e.target);
-    }
-    console.dir(e.target); */
+
   }
 
   function handleSortId(e) {
@@ -196,6 +332,7 @@ function TabelContainer(props) {
     setSortInvert((prevState) => !prevState);
   }
 
+  console.dir(currency[12].name)
   return (
     <div className="TabelContainer-container">
       {confirmOrder ? (
@@ -229,7 +366,7 @@ function TabelContainer(props) {
             <tr className="TabelContainer-first-row">
               <th onClick={handleSortId}>ID</th>
               <th onClick={handleSortType}>TYPE</th>
-              <th onClick={handleSortCurrency1}>{currency}</th>
+              <th onClick={handleSortCurrency1}>{currency[12].name}</th>
               <th onClick={handleSortCurrency2}>
                 {networkAbbreviations[network]}
               </th>

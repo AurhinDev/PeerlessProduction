@@ -8,6 +8,7 @@
 
 }
 .Slider-bar{
+  box-shadow: #00000059 2px 2px 5px;
 
   width: 100%;
   background-color: var(--secondWhite);
@@ -38,7 +39,7 @@
   margin-top: -1px;
   margin-left: -1px;
   color: var(--mainBlack);
-  background: var(--backgroundGreen);
+  
   transition: all 0.5s ease;
   display: flex;
   justify-content: center;
