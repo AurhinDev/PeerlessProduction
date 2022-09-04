@@ -17,32 +17,40 @@ function App() {
   const peer_abi = peerABI;
   const token_abi = tokenABI;
 
-  /* const connect = async () => {
+  const connect = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    console.log("Account:", await signer.getAddress());
-
-    const myConnectedAddress = provider.selectedAddress ? provider.selectedAddress : provider?.accounts[0];
+    
+    // Denna koden crashar också men används inte till något ännu
+    // const myConnectedAddress = provider.selectedAddress ? provider.selectedAddress : provider?.accounts[0];
+  
     const token = new ethers.Contract("0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358", token_abi, signer)
     const factory = new ethers.Contract("0xdAC17F958D2ee523a2206206994597C13D831ec7", factory_abi, signer)
     const peer = new ethers.Contract("VI HAR INGEN ADDRESS ÄNNU", peer_abi, signer)
-
-    const name = await token.name()
-    const asdasd = await factory.name()
-
-    //https://ethereum.stackexchange.com/questions/120817/how-to-call-a-contract-function-method-using-ethersjs
+    
+    // Denna koden crashar
+    // const peer1 = await factory.peerById(0) 
+    // console.dir(peer1)
+    
+    
+    const address = await signer.getAddress()
+    console.dir(await provider.getCode(address))
+    //https://ethereum.stackexchange.com/question s/120817/how-to-call-a-contract-function-method-using-ethersjs
 };
- */
+ 
+
+connect()
 
 
+
+ 
   return (
     <NetworkContext.Provider value={{ network, setNetwork }}>
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
       
       <div className="App">
-      {/* <button onClick={connect()}> Click </button> */}
+   {/*    <button onClick={connect()}> Click </button>  */}
         <Layout />
       </div>
 
