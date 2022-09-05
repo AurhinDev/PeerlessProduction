@@ -20,13 +20,19 @@ async function main() {
 
     // console.log("ink", ink.address);
 
-    // const Factory = await ethers.getContractFactory("PeerlessFactory");
-    // factory = await Factory.deploy();
-    // await factory.deployed();
+    const Factory = await ethers.getContractFactory("PeerlessFactory");
+    factory = await Factory.deploy();
+    await factory.deployed();
 
-    // console.log("factory", factory.address);
+    console.log("factory", factory.address);
 
-    // await factory.AddPeer(inkAdr, "INK");
+   await factory.AddPeer(inkAdr, "INK");
+
+   const a = await factory.GetPeerByID(0);
+
+    console.log("Peer adr: ", a.peerAdr.toString());
+
+
 
     // const TokenSale = await ethers.getContractFactory("TokenSale");
     // tokensale = await TokenSale.deploy(dev);
@@ -39,7 +45,7 @@ async function main() {
     // //await tokensale.setFrxstContract(frxstAdr);
 
      await hre.run("verify", {
-       address: "0x967F874FA8ccDd3E87070aF72ccc1aD946E833db",
+       address: a.peerAdr.toString(),
         constructorArgs: "C:/Users/brick/Desktop/PeerlessProduction/scripts/args.js"
      });
 }

@@ -64,6 +64,7 @@ contract Peer is ReentrancyGuard {
     event BuyTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
     event SellTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
 
+//TODO Refactor less parameters.
     constructor(address _factory, string memory _name, address _adr, uint _fee, uint _id) {
 
         owner = payable(msg.sender);
