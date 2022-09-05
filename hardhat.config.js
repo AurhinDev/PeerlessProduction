@@ -35,7 +35,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     mumbai: {
       url: RPC_URL,
       accounts: [PRIVATE_KEY_MAIN, PRIVATE_KEY_SECOND],
-      gas: 26000000
+      gas: 260000000
     }
     // mainnet: {
     //   url: "https://eth-mainnet.alchemyapi.io/v2/PqxTA5MX4SQlIRspW02IitZMpjcyMN8I",

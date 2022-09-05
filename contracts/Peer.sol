@@ -26,16 +26,11 @@ contract Peer is ReentrancyGuard {
     
     string name;
 
-    uint private _sellOrdersPosted = 0;
-    uint private _sellOrdersFilled = 0;
-    uint private _buyOrdersPosted = 0;
-    uint private _buyOrdersFilled = 0;
-    uint private _ordersCancelled = 0;
     uint public orderId = 0;
     uint public tokenFeesCollected = 0;
     uint public evmCurrencyFeesCollected = 0;
     uint id;
-    uint fee = 102;
+    uint fee = 2;
 
     modifier notFrozen() {
         require(!factory.IsPeerFrozen(id), "Peer is frozen");
@@ -64,21 +59,25 @@ contract Peer is ReentrancyGuard {
     event BuyTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
     event SellTokenOrderFilled(address indexed _from, uint indexed _id, uint _token, uint _evmCurrency);
 
-//TODO Refactor less parameters.
-    constructor(address _factory, string memory _name, address _adr, uint _fee, uint _id) {
-
+    constructor(string memory _name) {
         owner = payable(msg.sender);
-        id = _id;
-        fee = _fee;
-        name = _name; 
-
-        setContract(_adr);
-        setFactory(_factory);
+        name = _name;
     }
 
-    function setContract(address _adr) public onlyOwner() {
+    function initiate(address _tokenadr, address _factoryadr, uint _fee) public onlyOwner() {
+        fee = _fee;
+        token = IERC20(_tokenadr);
+        factory = PeerlessFactory(_factoryadr);
+    }
+
+    function setFee(uint _fee) public onlyOwner() {
+        fee = _fee;
+    }
+
+    function setTokenContract(address _adr) public onlyOwner() {
        token = IERC20(_adr);
     }
+    
     function setFactory(address _adr) public onlyOwner() {
        factory = PeerlessFactory(_adr);
     }
@@ -91,7 +90,6 @@ contract Peer is ReentrancyGuard {
         Order memory order = Order(orderId, payable(msg.sender), false, false, _evmCurrency, _token, true, block.timestamp);
         allOrders[orderId] = order;
         ordersByOwner[msg.sender].push(orderId);
-        _buyOrdersPosted += 1;
 
         emit BuyTokenOrder(msg.sender, orderId, _evmCurrency, _token);
 
@@ -108,7 +106,6 @@ contract Peer is ReentrancyGuard {
         Order memory order = Order(orderId, payable(msg.sender), false, false, _evmCurrency, _token, false, block.timestamp);
         allOrders[orderId] = order;
         ordersByOwner[msg.sender].push(orderId);
-        _sellOrdersPosted += 1;
 
         emit SellTokenOrder(msg.sender, orderId, _token, _evmCurrency);
 
@@ -148,7 +145,6 @@ contract Peer is ReentrancyGuard {
             require(hs);
 
             allOrders[_orderId].filled = true;
-            _buyOrdersFilled += 1;
             emit BuyTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
     }
 
@@ -172,13 +168,12 @@ contract Peer is ReentrancyGuard {
             (bool hs, ) = payable( allOrders[_orderId].owner).call{value: allOrders[_orderId].evmCurrency }("");
             require(hs);
 
-            _sellOrdersFilled += 1;
             allOrders[_orderId].filled = true;        
             emit SellTokenOrderFilled(msg.sender, orderId, allOrders[_orderId].token, allOrders[_orderId].evmCurrency);
     }
 
     function GetCostWithFee(uint amount) public view returns (uint) {
-        return (amount * fee) / 100;
+        return (amount * (100 + fee)) / 100;
     }
 
     function WithdrawFees() nonReentrant() onlyOwner() external {
@@ -206,26 +201,9 @@ contract Peer is ReentrancyGuard {
     function getEVMFeesCollected() public view returns(uint) {
         return evmCurrencyFeesCollected;
     }
-    function buyOrdersPosted() public view returns(uint){
-        return _buyOrdersPosted;
-    }
-    function sellOrdersPosted() public view returns(uint){
-        return _sellOrdersPosted;
-    }
-    function buyOrdersFilled() public view returns(uint){
-        return _buyOrdersFilled;
-    }
-    function sellOrdersFilled() public view returns(uint){
-        return _sellOrdersFilled;
-    }
-    function ordersCancelled() public view returns(uint) {
-        return _ordersCancelled;
-    }
-
     function getOrderByID(uint _id) public view returns (uint, address payable, bool, bool, uint, uint, bool) {
         return (allOrders[_id].id, allOrders[_id].owner, allOrders[_id].filled, allOrders[_id].cancelled, allOrders[_id].evmCurrency, allOrders[_id].token, allOrders[_id].buyToken);
     }
-
     function getOrdersByOwner(address _owner) public view returns (uint[] memory) {
         return ordersByOwner[_owner];
     }

@@ -12,25 +12,32 @@ async function main() {
     [owner, operator] = await ethers.getSigners();
     // Deploy Erc20
     const inkAdr  = "0x7b12Aa06509141AADeabB6CA200ce01a0F0b2B3E"
-    const factoryAdr = "0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358"
-
+    //const factoryAdr = "0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358"
+    const factoryAdr = "0x455834aE722e4D1B7029bc5B8B4424e4e626BB1A"
+    const peerAdr = "0xee81704F9130BE9654d058d815fc2155C2C59555"
     // const Ink = await ethers.getContractFactory("INKCoin");
     // ink = await Ink.deploy();
     // await ink.deployed();
 
     // console.log("ink", ink.address);
 
-    const Factory = await ethers.getContractFactory("PeerlessFactory");
-    factory = await Factory.deploy();
-    await factory.deployed();
+    //const Factory = await ethers.getContractFactory("PeerlessFactory");
+    // factory = await Factory.deploy();
+    // await factory.deployed();
 
-    console.log("factory", factory.address);
+    // console.log("factory", factory.address);
 
-   await factory.AddPeer(inkAdr, "INK");
+    //let factory = await Factory.attach(factoryAdr);
 
-   const a = await factory.GetPeerByID(0);
+    // await hre.run("verify", {
+    //   address: factory.address.toString()
+    // });
 
-    console.log("Peer adr: ", a.peerAdr.toString());
+
+    // const a = await factory.GetPeerByID(0);
+    
+  //   await factory.AddPeer(inkAdr, "INK");
+  //  console.log("Peer adr: ", a.peerAdr.toString());
 
 
 
@@ -44,8 +51,9 @@ async function main() {
     // console.log("tokensale", tokensale.address);
     // //await tokensale.setFrxstContract(frxstAdr);
 
+
      await hre.run("verify", {
-       address: a.peerAdr.toString(),
+       address: peerAdr,
         constructorArgs: "C:/Users/brick/Desktop/PeerlessProduction/scripts/args.js"
      });
 }

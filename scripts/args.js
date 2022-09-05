@@ -1,1 +1,1 @@
-module.exports = ["0x7b12Aa06509141AADeabB6CA200ce01a0F0b2B3E", "test"]
+module.exports = ["INK"]

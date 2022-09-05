@@ -1,5 +1,5 @@
 [
-  "constructor(address,string,address,uint256,uint256)",
+  "constructor(string)",
   "event BuyTokenOrder(address indexed,uint256 indexed,uint256,uint256)",
   "event BuyTokenOrderFilled(address indexed,uint256 indexed,uint256,uint256)",
   "event CancelledOrder(address indexed,uint256 indexed,uint256,uint256)",
@@ -14,8 +14,6 @@
   "function PostSellOrder(uint256,uint256)",
   "function WithdrawFees()",
   "function allOrders(uint256) view returns (uint256, address, bool, bool, uint256, uint256, bool, uint256)",
-  "function buyOrdersFilled() view returns (uint256)",
-  "function buyOrdersPosted() view returns (uint256)",
   "function evmCurrencyFeesCollected() view returns (uint256)",
   "function getContractEVMBalance() view returns (uint256)",
   "function getContractTokenBalance() view returns (uint256)",
@@ -23,12 +21,11 @@
   "function getOrderByID(uint256) view returns (uint256, address, bool, bool, uint256, uint256, bool)",
   "function getOrdersByOwner(address) view returns (uint256[])",
   "function getTokenFeesCollected() view returns (uint256)",
+  "function initiate(address,address,uint256)",
   "function orderId() view returns (uint256)",
   "function ordersByOwner(address,uint256) view returns (uint256)",
-  "function ordersCancelled() view returns (uint256)",
-  "function sellOrdersFilled() view returns (uint256)",
-  "function sellOrdersPosted() view returns (uint256)",
-  "function setContract(address)",
   "function setFactory(address)",
+  "function setFee(uint256)",
+  "function setTokenContract(address)",
   "function tokenFeesCollected() view returns (uint256)"
 ]
