@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import { NetworkContext, CurrencyContext } from "./helper/Context";
 
 function App() {
-  let pairings =exportedPairings;
+  let pairings = exportedPairings;
   const [network, setNetwork] = useState("Ethereum");
   const [currency, setCurrency] = useState(pairings[network][0]);
 
@@ -17,35 +17,35 @@ function App() {
   const peer_abi = peerABI;
   const token_abi = tokenABI;
 
-/*   const connect = async () => { */
-  async function connectToMetamask(){
+  /*   const connect = async () => { */
+  async function connectToMetamask() {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     await provider.send("eth_requestAccounts", []);
-    const signer =  provider.getSigner();
-  
+    const signer = provider.getSigner();
+
     // Denna koden crashar också men används inte till något ännu
     // const myConnectedAddress = provider.selectedAddress ? provider.selectedAddress : provider?.accounts[0];
     const address = await signer.getAddress();
-    const token = new ethers.Contract("0x7b12Aa06509141AADeabB6CA200ce01a0F0b2B3E", token_abi, signer)
-    const factory = new ethers.Contract("0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358", factory_abi, signer)
-    const peer1 = await factory.peerById(0) 
+    const token = new ethers.Contract(
+      "0x7b12Aa06509141AADeabB6CA200ce01a0F0b2B3E",
+      token_abi,
+      signer
+    );
+    const factory = new ethers.Contract(
+      "0x592A6983Ff361f5C74e1B63Bd66059cbc3c05358",
+      factory_abi,
+      signer
+    );
+    const peer1 = await factory.peerById(0);
     const peerAdress = peer1[1];
-    const peer = new ethers.Contract(peerAdress, peer_abi, signer)
-   console.dir(await peer.GetCostWithFee(1000))
-    // Denna koden crashar
+    const peer = new ethers.Contract(peerAdress, peer_abi, signer);
+    const peerFee = await peer.GetCostWithFee(1000)
+/*     console.dir(peerFee)
+ */    const hexToDecimal = (hex) => parseInt(hex, 16);
+    console.dir(hexToDecimal("0x6314d157"));
     
-    
-   /*  console.dir(signer) */
-   /*  console.dir(signer._address) */
-/*      const address = await signer.getAddress()
- */        /* console.log(address) */
-/*    console.dir(await provider.getCode(address))
- */
-/* console.dir(await provider.getCode(address))
- *//* console.dir(signer)
-   console.log("Account:", await signer.getAddress()); */
-     //https://ethereum.stackexchange.com/question s/120817/how-to-call-a-contract-function-method-using-ethersjs
-
+      let peerCount = factory.peerID;
+      console.dir(peer1)
     /*  struct PeerStruct {
       address owner;
       address peerAdr;
@@ -55,11 +55,20 @@ function App() {
       string name;
       bool frozen;
   } */
-    };
+  }
 
+  /*  console.dir(signer) */
+  /*  console.dir(signer._address) */
+  /*      const address = await signer.getAddress()
+   */ /* console.log(address) */
+  /*    console.dir(await provider.getCode(address))
+   */
+  /* console.dir(await provider.getCode(address))
+   */ /* console.dir(signer)
+   console.log("Account:", await signer.getAddress()); */
+  //https://ethereum.stackexchange.com/question s/120817/how-to-call-a-contract-function-method-using-ethersjs
 
-
-/*  async function connectToMetamask(){
+  /*  async function connectToMetamask(){
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   // Prompt user for account connections
   await provider.send("eth_requestAccounts", []);
@@ -68,17 +77,16 @@ function App() {
 }
 connectToMetamask()  */
 
-connectToMetamask()
+  connectToMetamask();
   return (
     <NetworkContext.Provider value={{ network, setNetwork }}>
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
-      
-      <div className="App">
-{/*       <button onClick={connect} className="button-23 connect2"> click  </button>  
- */}        <Layout />
-      </div>
-
-      </CurrencyContext.Provider >
+        <div className="App">
+          {/*       <button onClick={connect} className="button-23 connect2"> click  </button>
+           */}{" "}
+          <Layout />
+        </div>
+      </CurrencyContext.Provider>
     </NetworkContext.Provider>
   );
 }

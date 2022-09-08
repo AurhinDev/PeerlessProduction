@@ -10,6 +10,7 @@
 
 }
 
+
 .BuyAndSellContainer-HeaderAndButtons {
   width: 100%;
   display: flex;
@@ -19,6 +20,9 @@
   margin-right: 1rem;
 }
 
+.BuyAndSellContainer-text-left input{
+  margin-right: 1rem;
+}
 .button-23-red{
   background-color: var(--backgroundRed);
 }
@@ -34,51 +38,74 @@
 
 .BuyAndSellContainer-form {
   width: 80%;
-background-color: var(--mainWhite);
+background-color: var( --secondWhite);
   display: flex;
-  padding: 2% 10%;
+  padding: 6% 10%;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   border-radius: 0.2rem;
 }
-
-.BuyAndSellContainer-form-input {
+.BuyAndSellContainer-main{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1vh;
-  position: relative;
-}
-.BuyAndSellContainer-form-input label {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0.2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
+ 
+  
  
 }
-.BuyAndSellContainer-form-input input {
-  display: flex;
-  flex-direction: row;
+.BuyAndSellContainer-main p{
   
+  margin:0;
+}
+.BuyAndSellContainer-text{
+  width: 40%;
+  margin-right: 1rem;
+  
+}
+.BuyAndSellContainer-input{
+  width: 50%;
+  display: flex;
+ 
+  flex-direction: column;
+  margin-right: 1rem;
+ 
+}
+.BuyAndSellContainer-input input{
+  
+  width: 100%;
+  display: flex;
+  margin-top: -2px;
+  font-size: 0.8rem;
   padding: 0.2rem;
-  width: 80%;
-  border: none;
-  border-bottom: 1px solid var(--mainBlack);
-  margin-bottom: 2rem;
-  outline: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--mainColor);
+  border-radius: 0.2rem;
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+  transition: border-color calc(var(--transition, 0.2) * 1s) ease;
+ 
+
+  
 }
-.BuyAndSellContainer-form-input input:focus{
-  outline: none;
+
+.BuyAndSellContainer-input input, .BuyAndSellContainer-text p, .BuyAndSellContainer-currency p{
+  margin-bottom: 1rem;
 }
-.BuyAndSellContainer-form-submitButton {
-  width: auto;
+.BuyAndSellContainer-currency{
+  width: 10%;
+}
+
+.BuyAndSellContainer-form-submitButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.2rem 0.6rem;
   font-size: 1.1rem;
-  margin: auto;
-  margin-top: 1rem;
 }
-.BuyAndSellContainer-form-input input:focus ~ .BuyAndSellContainer-form-input label {
-  top: -20px;
+.BuyAndSellContainer-form-submitButton h3{
+  margin-top: -2px;
+  color: black;
+  margin-right:8px;
 }

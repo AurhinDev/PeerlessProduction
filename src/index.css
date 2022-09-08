@@ -4,7 +4,7 @@ body,
 .App {
   margin: 0%;
   padding: 0;
-  color: var(--mainBlack);
+  color: var(--white);
   overflow-x: hidden;
   width: 100vw;
 
@@ -42,6 +42,11 @@ body,
   --mainColorLight: #627493;
   --mainColor2: #768bae;
   --mainColor3: #BFC0C0;
+
+
+
+
+
 }
 
 h1,
@@ -218,4 +223,13 @@ h2 {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.AddSvg{
+  width: 40px;
+  height: 40px;
 }
