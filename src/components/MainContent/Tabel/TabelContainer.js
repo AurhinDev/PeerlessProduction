@@ -314,7 +314,7 @@ function TabelContainer(props) {
     setSortInvert((prevState) => !prevState);
   }
 
-  console.dir(currency[12].name);
+  
   return (
     <div className="TabelContainer-container">
       {confirmOrder ? (

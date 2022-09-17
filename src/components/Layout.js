@@ -4,16 +4,18 @@ import TopBar from "./NavBar/TopBar";
 import "./Layout.css";
 
 function Layout(props) {
-  const [connect, setConnect] = useState(false);
+  const connect = props.connect;
+  const [connected, setConnected] = useState(false);
 
   function handleConnect() {
-    setConnect(true);
+    connect()
+    setConnected(true);
   }
   return (
     <div className="layout-container ">
       <TopBar />
 
-      {connect ? (
+      {connected ? (
         <MainContainer />
       ) : (
         <div className="centerInDiv connectText">

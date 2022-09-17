@@ -29,7 +29,7 @@ function BuyAndSellContainer(props) {
     }
   }
   useEffect(() => {
-    console.dir(buy);
+    
   }, [buy]);
   function handleSubmit(e) {
     console.dir("hej");
