@@ -19,7 +19,7 @@ function App() {
   const connect = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     await provider.send("eth_requestAccounts", []);
-    const signerAdress = provider.getSigner();
+    const signer = provider.getSigner();
     const address = await signer.getAddress();
 
     const factory = new ethers.Contract(
@@ -34,16 +34,16 @@ function App() {
     const token = new ethers.Contract(peerTokenAdr, token_abi, signer);
    
    
-    const tokenAllowance =  await token.allowance(peerAdress, signerAdress);
+    const tokenAllowance =  await token.allowance(peerAdress, address);
     const hexToDecimal = (hex) => parseInt(hex, 16);
     console.dir("tokenAllowance1" +  hexToDecimal(tokenAllowance._hex )); 
     console.dir(tokenAllowance); 
     
-    const tokenApprove= await token.approve(peerAdress, 1000000000000000)
+    const tokenApporve = await token.approve(peerAdress, 1000000000000000)
    
    
-    const tokenAllowance2 =  await token.allowance(peerAdress, signerAdress);
-    console.dir(tokenAllowance2); 
+    const tokenAllowance2 =  await token.allowance(peerAdress, address);
+    console.dir(tokenAllowance); 
     
     console.dir("tokenAllowance2" + hexToDecimal(tokenAllowance2))
 
