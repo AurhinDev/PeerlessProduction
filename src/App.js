@@ -32,26 +32,22 @@ function App() {
     const peer = new ethers.Contract(peerAdress, peer_abi, signer);
     const peerTokenAdr = peer1[2];
     const token = new ethers.Contract(peerTokenAdr, token_abi, signer);
-   
-   
-    const tokenAllowance =  await token.allowance(peerAdress, address);
-    const hexToDecimal = (hex) => parseInt(hex, 16);
-    console.dir("tokenAllowance1" +  hexToDecimal(tokenAllowance._hex )); 
-    console.dir(tokenAllowance); 
     
-    const tokenApporve = await token.approve(peerAdress, 1000000000000000)
-   
-   
-    const tokenAllowance2 =  await token.allowance(peerAdress, address);
-    console.dir(tokenAllowance); 
-    
-    console.dir("tokenAllowance2" + hexToDecimal(tokenAllowance2))
+   console.log("peer adr", peerAdress);
+   console.log("token adr", peerTokenAdr);
 
+    const tokenAllowancePre =  await token.allowance(address, peerAdress);
+    console.log(ethers.utils.formatEther(tokenAllowancePre));
 
-
-
-
+    if (+ethers.utils.formatEther(tokenAllowancePre) <= 0) {
+      await token.approve(peerAdress, ethers.utils.parseEther("2"));
+      const tokenAllowancePost =  await token.allowance(address, peerAdress);
+      console.log(ethers.utils.formatEther(tokenAllowancePost));
+    }
+    // Here we need some listener as tokenAllowancePost will still say 0 while we're writing'
+    // to blockchain
   };
+
   return (
     <NetworkContext.Provider value={{ network, setNetwork }}>
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
